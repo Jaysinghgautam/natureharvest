@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { useState,useEffect } from "react";
+
+import SectionTitle from "./SectionTitle";
 
 const trustItems = [
   {
@@ -29,89 +31,77 @@ const trustItems = [
   },
 ];
 
-const whyChooseImages = [
+const images = [
   {
-    image: "https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?q=80&w=643&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "https://images.unsplash.com/photo-1530507629858-e4977d30e9e0?q=80&w=643&auto=format&fit=crop",
     alt: "Farmers working in agricultural field",
   },
- 
   {
-    image: "https://images.unsplash.com/photo-1566957173130-3f46743b0439?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDY3fHx8ZW58MHx8fHx8",
+    src: "https://images.unsplash.com/photo-1566957173130-3f46743b0439?w=600&auto=format&fit=crop&q=60",
     alt: "Agricultural products",
-  }
- 
+  },
 ];
 
 const WhyChooseUs = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-
   const [activeImage, setActiveImage] = useState(0);
 
-useEffect(() => {
-  const timer = setInterval(() => {
-    setActiveImage((prev) => (prev + 1) % whyChooseImages.length);
-  }, 2000);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveImage((prev) => (prev + 1) % images.length);
+    }, 3000);
 
-  return () => clearInterval(timer);
-}, []);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <section className="relative overflow-hidden bg-white py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-6">
-        {/* ================= TOP CONTENT ================= */}
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* Left */}
+    <section className="overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+
+        {/* Header */}
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="inline-flex rounded-r-full rounded-bl-full bg-[#fbe4b8] px-7 py-2.5">
-              <span className="text-sm font-semibold uppercase tracking-wide text-[#073f41]">
-                Why Trust Us
-              </span>
-            </div>
-
-            <h2 className="mt-7 max-w-xl text-4xl font-bold leading-[1.08] text-[#075657] sm:text-5xl lg:text-[50px]">
-              Why Choose
-              <br />
-              Nature Harvest?
-            </h2>
+            <SectionTitle
+              label="Why Trust Us"
+              title="Why Choose Nature Harvest?"
+              align="left"
+            />
           </motion.div>
 
-          {/* Right */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
+          <motion.p
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="lg:pt-5"
+            className="max-w-xl pt-2 text-[15px] leading-7 text-[#075657] lg:pt-8"
           >
-            <p className="max-w-2xl text-[16px] leading-7 text-[#075657] sm:text-[17px]">
-              Experience unmatched quality, transparency, and reliability with
-              Nature Harvest. We prioritize your needs, ensure global
-              compliance, simplify trade processes, and deliver premium
-              agricultural products on time, every time.
-            </p>
-          </motion.div>
+            Experience unmatched quality, transparency, and reliability with
+            Nature Harvest. We prioritize your needs, ensure global compliance,
+            simplify trade processes, and deliver premium agricultural
+            products on time, every time.
+          </motion.p>
         </div>
 
-        {/* ================= MAIN CONTENT ================= */}
-        <div className="mt-10 grid items-start gap-10 lg:grid-cols-[1fr_1.25fr]">
-          {/* ================= LEFT SIDE ================= */}
+        {/* Main Content */}
+        <div className="mt-10 grid items-start gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-0">
+
+          {/* Left */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative z-10"
+            className="relative z-20"
           >
-            {/* Trusted Partner Card */}
-            <div className="relative flex h-[150px] max-w-[595px] overflow-hidden rounded-br-[70px] rounded-tl-[0px]">
-              {/* Green Part */}
-              <div className="flex w-[54%] items-center rounded-br-[90px] bg-[#07564f] px-8 sm:px-10">
-                <h3 className="text-3xl font-bold leading-[0.95] text-white sm:text-[30px]">
+            {/* Trusted Partner Banner */}
+            <div className="relative mb-10 h-[125px] w-full max-w-[550px] lg:w-[115%]">
+              <div className="absolute left-0 top-0 z-20 flex h-full w-[45%] items-center rounded-br-[65px] bg-[#07564f] px-6 shadow-lg sm:px-8">
+                <h3 className="text-2xl font-bold leading-[1.05] text-white sm:text-[27px]">
                   Your
                   <br />
                   Trusted
@@ -120,9 +110,8 @@ useEffect(() => {
                 </h3>
               </div>
 
-              {/* Golden Part */}
-              <div className="flex flex-1 items-center bg-[#f2a619] px-7">
-                <p className="text-xl leading-[1.05] text-[#073f41] sm:text-[23px]">
+              <div className="absolute left-[35%] top-0 z-10 flex h-full w-[65%] items-center rounded-r-[20px] bg-[#f2a619] pl-[15%] pr-4">
+                <p className="text-base leading-[1.2] text-[#073f41] sm:text-[18px]">
                   Finest of India,
                   <br />
                   From the Silk Route
@@ -133,7 +122,7 @@ useEffect(() => {
             </div>
 
             {/* Accordion */}
-            <div className="mt-14 max-w-[440px] space-y-4">
+            <div className="max-w-[460px] space-y-3 lg:pr-8">
               {trustItems.map((item, index) => {
                 const isActive = activeIndex === index;
 
@@ -141,31 +130,27 @@ useEffect(() => {
                   <div key={item.title}>
                     <button
                       type="button"
-                      onClick={() => setActiveIndex(isActive ? -1 : index)}
+                      onClick={() =>
+                        setActiveIndex(isActive ? -1 : index)
+                      }
                       className={`
-                        flex
-                        w-full
-                        items-center
-                        justify-between
-                        rounded-r-full
-                        rounded-bl-full
-                        px-5
-                        py-3
+                        flex w-full items-center justify-between
+                        rounded-r-lg
+                        px-5 py-3.5
                         text-left
-                        transition-all
-                        duration-300
+                        transition-all duration-300
                         ${
                           isActive
                             ? "bg-[#f2a619] text-[#073f41]"
-                            : "bg-[#fbe8c4] text-[#111]"
+                            : "bg-[#fdf0d5] text-[#111]"
                         }
                       `}
                     >
-                      <span className="text-sm font-semibold sm:text-[15px]">
+                      <span className="text-[13px] font-semibold sm:text-sm">
                         {item.title}
                       </span>
 
-                      <span className="ml-4 text-lg font-semibold">
+                      <span className="ml-3 text-lg font-semibold">
                         {isActive ? "−" : "+"}
                       </span>
                     </button>
@@ -177,7 +162,7 @@ useEffect(() => {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <p className="px-3 py-4 text-[15px] leading-6 text-[#075657]">
+                        <p className="px-3 py-3 text-[13px] leading-6 text-[#075657] sm:text-sm">
                           {item.description}
                         </p>
                       </motion.div>
@@ -188,45 +173,81 @@ useEffect(() => {
             </div>
           </motion.div>
 
-          {/* ================= RIGHT IMAGE ================= */}
+          {/* Right Image */}
           <motion.div
-            initial={{ opacity: 0, x: 60 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9 }}
-            className="relative lg:-mt-16"
+            className="relative z-10 lg:-mt-10"
           >
             <div
               className="
-      relative
-      h-[500px]
-      overflow-hidden
-      rounded-tr-[110px]
-      rounded-bl-[110px]
-      rounded-br-[110px]
-      sm:h-[600px]
-      lg:h-[680px]
-    "
+                relative h-[450px]
+                w-full overflow-hidden
+                rounded-tr-[90px]
+                rounded-br-[90px]
+                rounded-bl-[90px]
+                shadow-xl
+                sm:h-[550px]
+                lg:h-[680px]
+              "
             >
-              {whyChooseImages.map((item, index) => (
+              {images.map((image, index) => (
                 <img
-                  key={item.image}
-                  src={item.image}
-                  alt={item.alt}
-                  className={`absolute inset-0 h-full w-full object-cover
-          transition-opacity duration-700
-          ${activeImage === index ? "opacity-100" : "opacity-0"}
-        `}
+                  key={image.src}
+                  src={image.src}
+                  alt={image.alt}
+                  className={`
+                    absolute inset-0
+                    h-full w-full object-cover
+                    transition-opacity duration-700
+                    ${
+                      activeImage === index
+                        ? "opacity-100"
+                        : "opacity-0"
+                    }
+                  `}
                 />
               ))}
 
-              {/* Image Overlay */}
-              {/* <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" /> */}
-
               {/* Trusted Badge */}
-              <div className="absolute right-5 top-5 flex h-[135px] w-[155px] flex-col items-center justify-center px-5 py-4 shadow-sm">
- 
-              <img src="https://natureharvest.co.in/about-us/trusted.png" alt="" />
+              <div className="absolute right-5 top-5 w-[105px] rounded-xl bg-white p-3 shadow-xl sm:right-6 sm:top-6 sm:w-[125px]">
+                <img
+                  src="https://natureharvest.co.in/about-us/trusted.png"
+                  alt="Trusted quality"
+                  className="w-full object-contain"
+                />
+              </div>
+
+              {/* Bottom Decoration */}
+              <div className="absolute bottom-[-10px] right-[-10px] opacity-80">
+                <svg
+                  width="140"
+                  height="140"
+                  viewBox="0 0 100 100"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M80 80 C 80 40, 40 20, 20 20"
+                    stroke="white"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M80 80 C 70 50, 40 40, 30 40"
+                    stroke="white"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                  <path
+                    d="M80 80 C 60 60, 40 60, 40 60"
+                    stroke="white"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </div>
             </div>
           </motion.div>

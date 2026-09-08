@@ -1,6 +1,8 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+ import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
+import SectionTitle from "../SectionTitle";
+import Button from "../Button";
 
 const faqs = [
   {
@@ -30,37 +32,40 @@ const faqs = [
   },
 ];
 
+const faqImages = [
+  {
+    image:
+      "https://natureharvest.co.in/product/%E0%A4%96%E0%A5%82%E0%A4%AC%E0%A4%B8%E0%A5%82%E0%A4%B0%E0%A4%A4-%E0%A4%B9%E0%A5%88%E0%A4%82-%E0%A4%A8%E0%A5%9B%E0%A4%BE%E0%A4%B0-%E0%A4%97%E0%A4%BE%E0%A4%82%E0%A4%B5-%E0%A4%AE%E0%A5%87%E0%A4%82.jpg",
+    alt: "Farmers working in rice field",
+  },
+  {
+    image: "https://natureharvest.co.in/product/Red%20Chile%20Processing.jpg",
+    alt: "Agricultural farming",
+  },
+];
+
 const FAQ = () => {
   const [open, setOpen] = useState(0);
 
   return (
-    <section className="bg-white px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
-      <div className="mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-2 lg:gap-14">
+    <section className="overflow-hidden bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24">
+      <div className="mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-2 lg:gap-16">
 
-        {/* Left Content */}
+        {/* Left */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
         >
-          <span className="inline-block rounded-tl-full rounded-tr-full bg-[#f8e6bf] px-5 py-2 text-xs font-medium uppercase text-[#174f50]">
-            Frequently Asked Questions
-          </span>
+          <SectionTitle
+            label="Frequently Asked Questions"
+            title="Below Are Some Frequently Asked Question And Answers"
+            description="Find quick answers to common questions about our services, products, and processes. We have compiled essential information to help you make informed decisions with ease and confidence."
+            align="left"
+          />
 
-          <h2 className="mt-5 max-w-xl text-4xl font-bold leading-tight text-[#00595d] sm:text-5xl">
-            Below Are Some Frequently
-            <br className="hidden sm:block" />
-            Asked Question And Answers
-          </h2>
-
-          <p className="mt-6 max-w-xl text-base leading-7 text-[#075657]">
-            Find quick answers to common questions about our services,
-            products, and processes. We have compiled essential information
-            to help you make informed decisions with ease and confidence.
-          </p>
-
-          {/* FAQ List */}
+          {/* FAQ Accordion */}
           <div className="mt-8 space-y-3">
             {faqs.map((faq, index) => {
               const isOpen = open === index;
@@ -68,16 +73,29 @@ const FAQ = () => {
               return (
                 <div
                   key={faq.question}
-                  className="overflow-hidden rounded-md bg-[#fff3d7]"
+                  className="overflow-hidden rounded-r-[25px] rounded-bl-[25px] bg-[#fff3d7]"
                 >
                   <button
                     type="button"
                     onClick={() => setOpen(isOpen ? -1 : index)}
-                    className="flex w-full items-center justify-between px-5 py-5 text-left text-sm font-medium text-[#00595d] sm:text-base"
+                    className={`
+                      flex w-full items-center justify-between
+                      px-5 py-4
+                      text-left
+                      transition-all duration-300
+                      sm:px-6 sm:py-5
+                      ${
+                        isOpen
+                          ? "bg-[#f2a318] text-[#075657]"
+                          : "text-[#075657]"
+                      }
+                    `}
                   >
-                    <span>Q: {faq.question}</span>
+                    <span className="pr-4 text-sm font-semibold sm:text-[15px]">
+                      Q: {faq.question}
+                    </span>
 
-                    <span className="ml-4 text-lg font-medium">
+                    <span className="shrink-0 text-xl font-medium">
                       {isOpen ? "−" : "+"}
                     </span>
                   </button>
@@ -88,9 +106,9 @@ const FAQ = () => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25 }}
+                        transition={{ duration: 0.3 }}
                       >
-                        <p className="px-5 pb-5 text-sm leading-6 text-[#075657]">
+                        <p className="px-5 pb-5 pt-3 text-sm leading-6 text-[#075657] sm:px-6">
                           {faq.answer}
                         </p>
                       </motion.div>
@@ -101,40 +119,64 @@ const FAQ = () => {
             })}
           </div>
 
-          {/* Button */}
-          <Link
-            to="/faqs"
-            className="mt-10 inline-flex rounded-bl-[38px] rounded-tr-[38px] bg-[#00595d] px-10 py-4 text-sm font-semibold text-white transition hover:bg-[#f2a318] hover:text-black"
-          >
-            View All FAQs
-          </Link>
+          <div className="mt-9">
+            <Button
+              to="/contact"
+              className="
+                min-w-[190px]
+                !bg-[#075b5b]
+                !text-white
+                hover:!bg-[#f2a318]
+                hover:!text-[#075657]
+              "
+            >
+              View All FAQs
+            </Button>
+          </div>
         </motion.div>
 
         {/* Right Images */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8 }}
-          className="space-y-12"
+          className="space-y-8 lg:space-y-10"
         >
-          <div className="overflow-hidden rounded-tr-[100px] rounded-bl-[100px] shadow-[0_15px_35px_rgba(0,0,0,0.08)]">
-            <img
-              src="https://natureharvest.co.in/product/%E0%A4%96%E0%A5%82%E0%A4%AC%E0%A4%B8%E0%A5%82%E0%A4%B0%E0%A4%A4-%E0%A4%B9%E0%A5%88%E0%A4%82-%E0%A4%A8%E0%A5%9B%E0%A4%BE%E0%A4%B0-%E0%A4%97%E0%A4%BE%E0%A4%82%E0%A4%B5-%E0%A4%AE%E0%A5%87%E0%A4%82.jpg"
-              alt="Farmers working in rice field"
-              className="h-[300px] w-full object-cover transition duration-700 hover:scale-105 sm:h-[350px]"
-            />
-          </div>
-
-          <div className="overflow-hidden rounded-tr-[100px] rounded-bl-[100px] shadow-[0_15px_35px_rgba(0,0,0,0.08)]">
-            <img
-              src="https://natureharvest.co.in/product/Red%20Chile%20Processing.jpg"
-              alt="Agricultural farming"
-              className="h-[300px] w-full object-cover transition duration-700 hover:scale-105 sm:h-[350px]"
-            />
-          </div>
+          {faqImages.map((item, index) => (
+            <motion.div
+              key={item.image}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.15,
+              }}
+              className="
+                group
+                overflow-hidden
+                rounded-tr-[90px]
+                rounded-bl-[90px]
+                shadow-[0_15px_35px_rgba(0,0,0,0.08)]
+              "
+            >
+              <img
+                src={item.image}
+                alt={item.alt}
+                className="
+                  h-[280px]
+                  w-full
+                  object-cover
+                  transition-transform
+                  duration-700
+                  group-hover:scale-105
+                  sm:h-[340px]
+                "
+              />
+            </motion.div>
+          ))}
         </motion.div>
-
       </div>
     </section>
   );

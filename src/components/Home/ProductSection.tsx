@@ -1,5 +1,7 @@
- import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+import SectionTitle from "../SectionTitle";
+import Button from "../Button";
 
 type Product = {
   id: string;
@@ -74,8 +76,7 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ product, index }: ProductCardProps) => {
-  const dark = product.dark;
-
+  const isDark = product.dark;
   const isLeft = product.position === "left";
 
   return (
@@ -86,43 +87,51 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
       className={`
-        group relative flex h-[165px] w-full overflow-hidden
+        group relative flex
+        h-[185px]
+        w-full
+        overflow-hidden
         ${
-          dark
+          isDark
             ? "bg-[#075b5b] text-white"
             : "bg-[#f6ad00] text-black"
         }
         ${
           isLeft
-            ? "rounded-bl-[65px] rounded-tr-[65px]"
-            : "rounded-br-[65px] rounded-tl-[65px]"
+            ? "rounded-bl-[75px] rounded-tr-[75px]"
+            : "rounded-br-[75px] rounded-tl-[75px]"
         }
       `}
     >
-      {/* ================= TEXT ================= */}
+      {/* Text */}
       <div
         className={`
-          relative z-10 flex h-full flex-col justify-center
+          relative z-10
+          flex h-full flex-col justify-center
           ${
             isLeft
-              ? "w-[58%] pl-7 pr-2"
-              : "ml-auto w-[58%] pl-2 pr-7"
+              ? "w-[57%] pl-7 pr-3 sm:pl-8"
+              : "ml-auto w-[57%] pl-3 pr-7 sm:pr-8"
           }
         `}
       >
-        <span className="text-sm font-bold leading-none">
+        <span className="text-base font-bold leading-none">
           {product.number}
         </span>
 
-        <h3 className="mt-2 text-xl font-semibold leading-none">
+        <h3 className="mt-2 text-2xl font-semibold leading-none sm:text-[25px]">
           {product.name}
         </h3>
 
         <p
           className={`
-            mt-2 max-w-[190px] text-[9px] leading-[1.4]
+            mt-3
+            max-w-[205px]
+            text-[10px]
+            leading-[1.45]
+            sm:text-[11px]
             ${
-              dark
+              isDark
                 ? "text-white/90"
                 : "text-black/80"
             }
@@ -132,15 +141,17 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
         </p>
       </div>
 
-      {/* ================= IMAGE ================= */}
+      {/* Product Image */}
       <div
         className={`
-          absolute top-1/2 h-[125px] w-[125px]
-          -translate-y-1/2 overflow-hidden
+          absolute top-1/2
+          h-[145px] w-[145px]
+          -translate-y-1/2
+          overflow-hidden
           ${
             isLeft
-              ? "right-6 rounded-tr-[55px] rounded-bl-[55px]"
-              : "left-6 rounded-tl-[55px] rounded-br-[55px]"
+              ? "right-6 rounded-tr-[60px] rounded-bl-[60px]"
+              : "left-6 rounded-tl-[60px] rounded-br-[60px]"
           }
         `}
       >
@@ -165,109 +176,65 @@ const ProductsSection = () => {
   return (
     <section
       id="products"
-      className="bg-white px-5 py-16 sm:px-8 lg:px-10 lg:py-24"
+      className="overflow-hidden bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-10 lg:py-24"
     >
-      <div className="mx-auto max-w-[1200px]">
+      <div className="mx-auto max-w-[1300px]">
 
-        {/* ================= HEADING ================= */}
+        {/* Heading */}
+        <SectionTitle
+          label="Products"
+          title="Our Products"
+          align="left"
+        />
+
+        {/* Description */}
         <motion.div
-          initial={{ opacity: 0, y: 25 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
+          className="mt-7 max-w-[1100px] space-y-4"
         >
-          <span
-            className="
-              inline-flex
-              rounded-tl-[5px]
-              rounded-tr-[18px]
-              rounded-br-[5px]
-              rounded-bl-[18px]
-              bg-[#f7e8cc]
-              px-5
-              py-2
-              text-[10px]
-              font-semibold
-              tracking-wider
-              text-[#075657]
-            "
-          >
-            PRODUCTS
-          </span>
-
-          <h2
-            className="
-              mt-3
-              text-4xl
-              font-semibold
-              tracking-tight
-              text-[#075657]
-              sm:text-5xl
-            "
-          >
-            Our Products
-          </h2>
-        </motion.div>
-
-        {/* ================= DESCRIPTION ================= */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.8,
-            delay: 0.2,
-          }}
-          className="
-            mt-7
-            max-w-[1050px]
-            space-y-4
-            text-[11px]
-            leading-6
-            text-[#075657]
-            sm:text-[13px]
-          "
-        >
-          <p className="flex gap-2">
-            <span className="shrink-0 text-lg text-[#f2a318]">
+          <p className="flex gap-3 text-[13px] leading-7 text-[#075657] sm:text-[14px]">
+            <span className="mt-1 shrink-0 text-lg text-[#f2a318]">
               ❯
             </span>
 
             <span>
               At Nature Harvest, we deliver premium agricultural
-              products—including rice, spices, pulses, millets,
-              oil seeds, and other agro products—sustainably sourced
-              and rigorously tested to meet global quality standards.
+              products—including rice, spices, pulses, millets, oil seeds,
+              and other agro products—sustainably sourced and rigorously
+              tested to meet global quality standards.
             </span>
           </p>
 
-          <p className="flex gap-2">
-            <span className="shrink-0 text-lg text-[#f2a318]">
+          <p className="flex gap-3 text-[13px] leading-7 text-[#075657] sm:text-[14px]">
+            <span className="mt-1 shrink-0 text-lg text-[#f2a318]">
               ❯
             </span>
 
             <span>
               With a focus on transparency, ethical sourcing, and
               customer-first solutions, we ensure seamless processes,
-              tailored offerings, and unmatched reliability.
+              tailored offerings, and unmatched reliability. Choose Nature
+              Harvest for products that embody purity, consistency, and a
+              steadfast commitment to excellence.
             </span>
           </p>
         </motion.div>
 
-        {/* ================= PRODUCTS GRID ================= */}
+        {/* Products */}
         <div
           className="
-            relative
-            mt-10
-            grid
-            items-center
-            gap-5
-            lg:grid-cols-[1fr_180px_1fr]
+            relative mt-12
+            grid items-center
+            gap-6
+            lg:grid-cols-[1fr_210px_1fr]
+            lg:gap-7
           "
         >
-
-          {/* ================= LEFT COLUMN ================= */}
-          <div className="flex flex-col gap-5">
+          {/* Left Cards */}
+          <div className="flex flex-col gap-6">
             {products
               .filter((product) => product.position === "left")
               .map((product, index) => (
@@ -279,12 +246,12 @@ const ProductsSection = () => {
               ))}
           </div>
 
-          {/* ================= CENTER FARMER ================= */}
+          {/* Center Farmer */}
           <motion.div
             initial={{
               opacity: 0,
               scale: 0.85,
-              y: 30,
+              y: 35,
             }}
             whileInView={{
               opacity: 1,
@@ -294,10 +261,9 @@ const ProductsSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="
-              relative
-              z-10
+              relative z-10
               hidden
-              h-[360px]
+              h-[400px]
               items-end
               justify-center
               lg:flex
@@ -315,8 +281,8 @@ const ProductsSection = () => {
             />
           </motion.div>
 
-          {/* ================= RIGHT COLUMN ================= */}
-          <div className="flex flex-col gap-5">
+          {/* Right Cards */}
+          <div className="flex flex-col gap-6">
             {products
               .filter((product) => product.position === "right")
               .map((product, index) => (
@@ -329,11 +295,11 @@ const ProductsSection = () => {
           </div>
         </div>
 
-        {/* ================= MOBILE FARMER ================= */}
+        {/* Mobile Farmer */}
         <motion.div
           initial={{
             opacity: 0,
-            y: 20,
+            y: 25,
           }}
           whileInView={{
             opacity: 1,
@@ -341,49 +307,32 @@ const ProductsSection = () => {
           }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="
-            my-8
-            flex
-            justify-center
-            lg:hidden
-          "
+          className="my-10 flex justify-center lg:hidden"
         >
           <img
             src="https://res.cloudinary.com/drc0gwhz9/image/upload/v1788773396/Screenshot_2026-09-07_143517_qa4gq3.png"
             alt="Farmer"
-            className="
-              h-72
-              w-auto
-              object-contain
-            "
+            className="h-72 w-auto object-contain sm:h-80"
           />
         </motion.div>
 
-        {/* ================= BUTTON ================= */}
+        {/* Button */}
         <div className="mt-12 flex justify-center">
-          <Link
+          <Button
             to="/products"
             className="
-              rounded-tl-[5px]
-              rounded-tr-[25px]
-              rounded-br-[5px]
-              rounded-bl-[25px]
+              min-w-[190px]
               border
               border-[#f2a318]
-              px-10
-              py-3
-              text-xs
-              font-semibold
-              text-[#075657]
-              transition-all
-              duration-300
-              hover:bg-[#f2a318]
-              hover:text-black
-              hover:-translate-y-0.5
+              bg-white
+              !text-[#075657]
+              shadow-none
+              hover:!bg-[#f2a318]
+              hover:!text-[#075657]
             "
           >
             View All Products
-          </Link>
+          </Button>
         </div>
       </div>
     </section>
