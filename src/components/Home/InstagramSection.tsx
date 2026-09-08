@@ -1,45 +1,22 @@
  import { motion } from "framer-motion";
 import Button from "../Button";
 
-const instagramPosts = [
-  {
-    image:
-      "https://images.pexels.com/photos/11678442/pexels-photo-11678442.jpeg",
-    url: "https://www.instagram.com/natureharvest.in/",
-  },
-  {
-    image:
-      "https://images.pexels.com/photos/1206593/pexels-photo-1206593.jpeg",
-    url: "https://www.instagram.com/natureharvest.in/",
-  },
-  {
-    image:
-      "https://images.pexels.com/photos/5180291/pexels-photo-5180291.jpeg",
-    url: "https://www.instagram.com/natureharvest.in/",
-  },
-  {
-    image:
-      "https://images.pexels.com/photos/2518861/pexels-photo-2518861.jpeg",
-    url: "https://www.instagram.com/natureharvest.in/",
-  },
+const instagramImages = [
+  "https://images.pexels.com/photos/11678442/pexels-photo-11678442.jpeg",
+  "https://images.pexels.com/photos/1206593/pexels-photo-1206593.jpeg",
+  "https://images.pexels.com/photos/5180291/pexels-photo-5180291.jpeg",
+  "https://images.pexels.com/photos/2518861/pexels-photo-2518861.jpeg",
 ];
 
 const InstagramSection = () => {
   return (
-    <section className="overflow-hidden bg-white px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
+    <section className="bg-white px-5 py-14 sm:px-8 lg:px-16 lg:py-20">
       <div className="mx-auto max-w-7xl">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col justify-between gap-6 sm:flex-row sm:items-center"
-        >
+        <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
           <div className="flex items-center gap-5">
-            {/* Instagram Icon */}
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#fce4ec] text-3xl text-[#e1306c]">
+            <div className="text-4xl text-[#e1306c] sm:text-5xl">
               ◎
             </div>
 
@@ -54,49 +31,37 @@ const InstagramSection = () => {
             </div>
           </div>
 
-          {/* Follow Button */}
-<Button href="https://www.instagram.com/natureharvest.in/">
-  Follow Us
-</Button>
-        </motion.div>
+          <Button href="https://www.instagram.com/natureharvest.in/">
+            Follow Us
+          </Button>
+        </div>
 
-        {/* Instagram Posts */}
-        <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-          {instagramPosts.map((post, index) => (
+        {/* Instagram Images */}
+        <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5">
+          {instagramImages.map((image, index) => (
             <motion.a
-              key={post.image}
-              href={post.url}
+              key={image}
+              href="https://www.instagram.com/natureharvest.in/"
               target="_blank"
               rel="noreferrer"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{
-                duration: 0.6,
+                duration: 0.5,
                 delay: index * 0.1,
               }}
-              className={`group relative block h-[220px] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.08)] sm:h-[280px] lg:h-[320px] ${
+              className={`group block h-[230px] overflow-hidden shadow-sm sm:h-[280px] ${
                 index % 2 === 0
-                  ? "rounded-tl-[55px] rounded-br-[55px]"
-                  : "rounded-tr-[55px] rounded-bl-[55px]"
+                  ? "rounded-tl-[35px] rounded-br-[35px]"
+                  : "rounded-tr-[35px] rounded-bl-[35px]"
               }`}
             >
-              {/* Image */}
               <img
-                src={post.image}
-                alt={`Nature Harvest Instagram post ${index + 1}`}
+                src={image}
+                alt={`Nature Harvest Instagram ${index + 1}`}
                 className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
               />
-
-              {/* Green Overlay */}
-              <div className="absolute inset-0 bg-[#00595d]/0 transition duration-500 group-hover:bg-[#00595d]/45" />
-
-              {/* Instagram Icon on Hover */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 transition duration-500 group-hover:opacity-100">
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white/90 text-2xl text-[#e1306c] shadow-lg">
-                  ◎
-                </div>
-              </div>
             </motion.a>
           ))}
         </div>
