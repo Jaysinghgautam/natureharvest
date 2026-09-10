@@ -37,10 +37,10 @@ const Button = ({
     text-base
     font-bold
     tracking-wide
-    text-white
+    !text-black
     shadow-[0_8px_22px_rgba(242,163,24,0.25)]
     transition-all
-    duration-500
+    duration-500 
     ease-in-out
 
     hover:-translate-y-1
@@ -48,8 +48,8 @@ const Button = ({
     hover:rounded-tr-[6px]
     hover:rounded-br-[48px]
     hover:rounded-bl-[6px]
-    hover:bg-[#075b5b]
-    hover:text-white
+    hover:bg-[#c77c00]
+    hover:!text-black
     hover:shadow-[0_12px_28px_rgba(7,91,91,0.25)]
 
     active:translate-y-0
@@ -61,23 +61,31 @@ const Button = ({
   if (to) {
     return (
       <Link to={to} className={styles}>
-        <span className="relative z-10">{children}</span>
+        <span className="relative z-10 !text-black">{children}</span>
       </Link>
     );
   }
 
   if (href) {
     return (
-      <a href={href} target="_blank" rel="noreferrer" className={styles}>
-        <span className="relative z-10">{children}</span>
+      <a
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+        className={styles}
+      >
+        <span className="relative z-10 !text-black">{children}</span>
       </a>
     );
   }
 
   return (
-    <button type={type} onClick={onClick} className={styles}>
-      <span className="relative z-10">{children}</span>
- 
+    <button
+      type={type}
+      onClick={onClick}
+      className={styles}
+    >
+      <span className="relative z-10 !text-black">{children}</span>
     </button>
   );
 };
