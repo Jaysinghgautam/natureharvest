@@ -2,56 +2,98 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollTop from "./components/ScrollTop";
 
 import Home from "./pages/Home";
 import OurStory from "./pages/OurStory";
 import Certificates from "./pages/Certificates";
 import BI from "./pages/BI";
 // import Brochures from "./pages/Brochures";
-// import Products from "./pages/products";
+import Products from "./pages/products";
+import ProductDetails from "./pages/ProductDetail";
 
 import Gallery from "./pages/Gallery";
 import Blogs from "./pages/Blogs";
+import BlogDetails from "./pages/BlogDetails";
 import Contact from "./pages/Contact";
-import ScrollTop from "./components/ScrollTop";
+
+import { AppProvider } from "./context/AppContext";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-white text-gray-900">
-        <Navbar />
-        <ScrollTop />
-        <main className="pt-20">
-          <Routes>
-            {/* Home */}
-            <Route path="/" element={<Home />} />
+      <AppProvider>
+        <div className="min-h-screen bg-white text-gray-900">
+          <Navbar />
 
-            {/* About */}
-            <Route path="/about/our-story" element={<OurStory />} />
-            <Route path="/about/certificates" element={<Certificates />} />
-            <Route path="/about/bi" element={<BI />} />
-            {/* <Route path="/about/brochures" element={<Brochures />} /> */}
+          <ScrollTop />
 
-            {/* Products */}
-            {/* <Route path="/products" element={<Products />} /> */}
+          <main className="pt-20">
+            <Routes>
+              {/* Home */}
+              <Route path="/" element={<Home />} />
 
-            {/* Gallery */}
-            <Route path="/gallery" element={<Gallery />} />
+              {/* About */}
+              <Route
+                path="/about/our-story"
+                element={<OurStory />}
+              />
 
-            {/* Blogs */}
-            <Route path="/blogs" element={<Blogs />} />
-            {/* <Route path="/blogs/:slug" element={<BlogDetails />} /> */}
+              <Route
+                path="/about/certificates"
+                element={<Certificates />}
+              />
 
-            {/* Contact */}
-            <Route path="/contact" element={<Contact />} />
+              <Route
+                path="/about/bi"
+                element={<BI />}
+              />
 
-            {/* 404 */}
-            {/* <Route path="*" element={<NotFound />} />  */}
-          </Routes>
-        </main>
+              {/* Brochures */}
+              {/* <Route
+                path="/about/brochures"
+                element={<Brochures />}
+              /> */}
 
-        <Footer />
-      </div>
+              {/* Products */}
+              <Route
+                path="/products"
+                element={<Products />}
+              />
+              <Route
+  path="/products/:id"
+  element={<ProductDetails />}
+/>
+
+              {/* Gallery */}
+              <Route
+                path="/gallery"
+                element={<Gallery />}
+              />
+
+              {/* Blogs */}
+              <Route
+                path="/blogs"
+                element={<Blogs />}
+              />
+
+              {/* Blog Details */}
+              <Route
+                path="/blogs/:slug"
+                element={<BlogDetails />}
+              />
+
+              {/* Contact */}
+              <Route
+                path="/contact"
+                element={<Contact />}
+              />
+            </Routes>
+          </main>
+
+          <Footer />
+        </div>
+      </AppProvider>
     </BrowserRouter>
   );
 }
