@@ -2,7 +2,8 @@
 
 import Breadcrumb from "../components/Breadcrub";
 
-// --- GALLERY IMAGES ---
+// ================= GALLERY IMAGES =================
+
 const galleryImages = [
   {
     id: 1,
@@ -51,11 +52,13 @@ const galleryImages = [
   },
 ];
 
-// --- CONTAINER ANIMATION ---
+// ================= ANIMATION =================
+
 const containerVariants: Variants = {
   hidden: {
     opacity: 0,
   },
+
   show: {
     opacity: 1,
     transition: {
@@ -64,33 +67,38 @@ const containerVariants: Variants = {
   },
 };
 
-// --- IMAGE ANIMATION ---
 const itemVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 30,
   },
+
   show: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut" as const,
     },
   },
 };
 
+// ================= GALLERY =================
+
 const Gallery = () => {
   return (
     <div className="min-h-screen bg-white pb-16 lg:pb-24">
+
       {/* ================= BREADCRUMB ================= */}
+
       <Breadcrumb
         title="Gallery"
         backgroundImage="/images/breadcrumb.jpg"
       />
 
-      {/* ================= GALLERY ================= */}
+      {/* ================= GALLERY GRID ================= */}
+
       <section className="mx-auto w-full max-w-7xl px-4 pt-12 sm:px-6 lg:px-8 lg:pt-16">
+
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -134,12 +142,12 @@ const Gallery = () => {
                   object-cover
                   transition-transform
                   duration-700
-                  ease-out
                   group-hover:scale-110
                 "
               />
 
               {/* Hover Overlay */}
+
               <div
                 className="
                   absolute
@@ -153,6 +161,7 @@ const Gallery = () => {
             </motion.div>
           ))}
         </motion.div>
+
       </section>
     </div>
   );
