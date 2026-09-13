@@ -122,7 +122,7 @@ export const productVariants: ProductVariant[] = [
     name: "1121 Basmati Rice",
     description:
       "A Premium Rice Variety, 1121 Basmati Rice is Celebrated For Its Extra-Long Grains, Exceptional Elongation...",
-    image: "/images/basmati-rice.jpg",
+    image: "/images/1121 BASMATI RICE.png",
   },
   {
     id: "basmati-1401",
@@ -185,3 +185,6 @@ export const productVariants: ProductVariant[] = [
 ];
 
 export default products;
+
+
+

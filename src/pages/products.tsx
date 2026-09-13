@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Breadcrumb from "../components/Breadcrub";
@@ -12,7 +11,7 @@ const productCategories = [
     description:
       "Premium Basmati Rice With Long Grains, Rich Aroma, And Fluffy Texture, Ideal For Luxurious Dishes Like Biryani And Pilaf.",
     image:
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80",
+      "/images/basmati-rice.png",
   },
   {
     id: 2,
@@ -20,7 +19,7 @@ const productCategories = [
     description:
       "A Variety Of Non-Basmati Rice With Great Texture, Ideal For Everyday Meals And Versatile Cooking Needs.",
     image:
-      "https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?auto=format&fit=crop&q=80",
+      "/images/non-basmati-rice.png",
   },
   {
     id: 3,
@@ -28,7 +27,39 @@ const productCategories = [
     description:
       "A Wide Range Of Aromatic Spices, Including Cumin, Turmeric, And Cardamom, Providing Authentic Flavor To Your Dishes.",
     image:
-      "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80",
+      "/images/spices.png",
+  },
+  {
+    id: 4,
+    title: "Pulses and Lentils",
+    description:
+      "High-Quality Pulses And Lentils, Including Lentils, Chickpeas, And Beans, Perfect For Nutritious And Hearty Meals.",
+    image:
+      "/images/pulsess-and-lentils.png",
+  },
+  {
+    id: 5,
+    title: "Millets & Coarse Grains",
+    description:
+      "Healthy And Nutritious Millets And Coarse Grains, Perfect For Weight Management And Wholesome Meals.",
+    image:
+      "/images/millets&Coarse-grains.png",
+  },
+  {
+    id: 6,
+    title: "Dehydrated & Processed Items",
+    description:
+      "Convenient Dehydrated And Processed Foods Like Dried Fruits And Vegetables, Ideal For Snacks And Garnishes.",
+    image:
+      "/images/dehydrated1.png",
+  },
+  {
+    id: 7,
+    title: "Oil Seeds",
+    description:
+      "Premium Oil Seeds, Including Sunflower, Mustard, And Sesame, Perfect For Extracting Pure, Natural Oils.",
+    image:
+      "/images/oilseds.png",
   },
 ];
 

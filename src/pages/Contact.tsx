@@ -1,15 +1,16 @@
- import React from "react";
-import { motion } from "framer-motion";
+import { type FormEvent } from "react";
+import { motion, type Variants } from "framer-motion";
 import { MapPin, Mail, Phone } from "lucide-react";
 
-// import Breadcrumb from "../components/Breadcrub";
- 
 import Button from "../components/Button";
 import SectionTitle from "../components/SectionTitle";
 
 // --- ANIMATION VARIANTS ---
-const slideRight = {
-  hidden: { opacity: 0, x: -40 },
+const slideRight: Variants = {
+  hidden: {
+    opacity: 0,
+    x: -40,
+  },
   show: {
     opacity: 1,
     x: 0,
@@ -20,8 +21,11 @@ const slideRight = {
   },
 };
 
-const slideLeft = {
-  hidden: { opacity: 0, x: 40 },
+const slideLeft: Variants = {
+  hidden: {
+    opacity: 0,
+    x: 40,
+  },
   show: {
     opacity: 1,
     x: 0,
@@ -62,12 +66,13 @@ const contactDetails = [
   },
 ];
 
-const Contacts = () => {
+const Contact = () => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="min-h-screen bg-[#f8f9fa]">
-      {/* Breadcrumb */}
-      {/* <Breadcrumb /> */}
-
       {/* --- TOP MAP SECTION --- */}
       <div className="h-[350px] w-full bg-gray-200 sm:h-[450px]">
         <iframe
@@ -96,9 +101,10 @@ const Contacts = () => {
           >
             {/* Section Title */}
             <SectionTitle
-              badge="Contact Now"
+              label="Contact Now"
               title="Have An Enquiry Or Some Feedback?"
               description="We would love to hear from you. Maybe you have a question about one of our events or membership options? Fill in the details on the form and we'll get back to you as soon as we possibly can."
+              align="left"
             />
 
             {/* Contact Details */}
@@ -111,7 +117,9 @@ const Contacts = () => {
                     </div>
 
                     <div>
-                      <p className="text-sm text-gray-500">{title}</p>
+                      <p className="text-sm text-gray-500">
+                        {title}
+                      </p>
 
                       <p className="mt-1 text-base font-semibold leading-relaxed text-[#075657]">
                         {content}
@@ -133,7 +141,7 @@ const Contacts = () => {
             <div className="rounded-lg bg-[#14423e] p-8 shadow-xl sm:p-10 lg:p-12">
               <form
                 className="flex flex-col gap-6"
-                onSubmit={(e) => e.preventDefault()}
+                onSubmit={handleSubmit}
               >
                 {/* Inputs */}
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -174,7 +182,7 @@ const Contacts = () => {
                   className="w-full resize-y rounded bg-white px-4 py-4 text-sm text-gray-800 outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-[#f2a318]"
                 />
 
-                {/* reCAPTCHA */}
+                {/* reCAPTCHA UI */}
                 <div className="flex w-fit items-center gap-4 rounded-md border border-gray-300 bg-[#f9f9f9] px-4 py-3 shadow-sm">
                   <div className="flex items-center gap-3">
                     <input
@@ -217,4 +225,4 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default Contact;
