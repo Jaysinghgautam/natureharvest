@@ -18,6 +18,12 @@ import BlogDetails from "./pages/BlogDetails";
 import Contact from "./pages/Contact";
 
 import { AppProvider } from "./context/AppContext";
+import ProductVariantDetails from "./pages/ProductVarientDetails";
+import NotFound from "./pages/NotFound";
+import FAQ from "./pages/FAQ";
+
+import Privacy from "./pages/Privacy";
+import TermAndCondition from "./pages/TermAndCondition";
 
 function App() {
   return (
@@ -32,62 +38,33 @@ function App() {
             <Routes>
               {/* Home */}
               <Route path="/" element={<Home />} />
-
               {/* About */}
-              <Route
-                path="/about/our-story"
-                element={<OurStory />}
-              />
-
-              <Route
-                path="/about/certificates"
-                element={<Certificates />}
-              />
-
-              <Route
-                path="/about/bi"
-                element={<BI />}
-              />
-
-              {/* Brochures */}
-              {/* <Route
-                path="/about/brochures"
-                element={<Brochures />}
-              /> */}
-
+              <Route path="/about/our-story" element={<OurStory />} />
+              <Route path="/about/certificates" element={<Certificates />} />
+              <Route path="/about/bi" element={<BI />} />
               {/* Products */}
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/:id" element={<ProductDetails />} />
               <Route
-                path="/products"
-                element={<Products />}
+                path="/products/:id/:variantId"
+                element={<ProductVariantDetails />}
               />
-              <Route
-  path="/products/:id"
-  element={<ProductDetails />}
-/>
-
               {/* Gallery */}
-              <Route
-                path="/gallery"
-                element={<Gallery />}
-              />
-
+              <Route path="/gallery" element={<Gallery />} />
               {/* Blogs */}
-              <Route
-                path="/blogs"
-                element={<Blogs />}
-              />
-
+              <Route path="/blogs" element={<Blogs />} />
               {/* Blog Details */}
-              <Route
-                path="/blogs/:slug"
-                element={<BlogDetails />}
-              />
-
+              <Route path="/blogs/:slug" element={<BlogDetails />} />
               {/* Contact */}
-              <Route
-                path="/contact"
-                element={<Contact />}
-              />
+              <Route path="/contact" element={<Contact />} />
+              {/* Not Found */}
+              <Route path="*" element={<NotFound />} />
+              {/* Privacy Policy */}
+              <Route path="/privacy-policy" element={<Privacy />} />
+              {/* FAQ */}
+              <Route path="/faq" element={<FAQ />} />
+              Term and Conditions
+              <Route path="/terms" element={<TermAndCondition />} />
             </Routes>
           </main>
 

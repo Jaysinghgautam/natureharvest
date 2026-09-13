@@ -1,5 +1,7 @@
- import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+
+import { useAppContext } from "../context/AppContext";
 
 type BlogCardProps = {
   slug: string;
@@ -18,7 +20,13 @@ const BlogCard = ({
   date,
   category = "Agriculture",
 }: BlogCardProps) => {
+  const { openBlogDetail } = useAppContext();
+
   const [day, month] = date.split(" ");
+
+  const handleBlogClick = () => {
+    openBlogDetail(slug);
+  };
 
   return (
     <motion.article
@@ -31,6 +39,7 @@ const BlogCard = ({
       {/* Image */}
       <Link
         to={`/blogs/${slug}`}
+        onClick={handleBlogClick}
         className="relative block h-[250px] overflow-hidden sm:h-[270px]"
       >
         <img
@@ -60,7 +69,10 @@ const BlogCard = ({
           {category}
         </span>
 
-        <Link to={`/blogs/${slug}`}>
+        <Link
+          to={`/blogs/${slug}`}
+          onClick={handleBlogClick}
+        >
           <h3 className="mt-2 text-xl font-bold leading-snug text-[#00595d] transition-colors duration-300 group-hover:text-[#f2a318]">
             {title}
           </h3>
@@ -72,9 +84,13 @@ const BlogCard = ({
 
         <Link
           to={`/blogs/${slug}`}
+          onClick={handleBlogClick}
           className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#00595d] transition-all duration-300 group-hover:gap-3"
         >
           Read More
+          <span className="transition-transform duration-300 group-hover:translate-x-1">
+            →
+          </span>
         </Link>
       </div>
     </motion.article>
