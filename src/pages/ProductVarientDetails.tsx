@@ -7,25 +7,29 @@ import ProductCard from "../components/ProductCard";
 
 import { products, productVariants } from "../data/products";
 
+type TabType = "description" | "features" | "quality";
+
 const ProductVariantDetails = () => {
   const { id, variantId } = useParams<{
     id: string;
     variantId: string;
   }>();
 
-  const product = products.find((item) => String(item.id) === String(id));
+  const [activeTab, setActiveTab] = useState<TabType>("description");
 
+  /* ================= FIND CATEGORY ================= */
+  const product = products.find(
+    (item) => String(item.id) === String(id)
+  );
+
+  /* ================= FIND VARIANT ================= */
   const variant = productVariants.find(
     (item) =>
       String(item.id) === String(variantId) &&
-      String(item.categoryId) === String(id),
+      String(item.categoryId) === String(id)
   );
 
-  const [activeTab, setActiveTab] = useState<
-    "description" | "features" | "quality"
-  >("description");
-
-  /* Product Not Found */
+  /* ================= NOT FOUND ================= */
   if (!product || !variant) {
     return (
       <section className="flex min-h-[70vh] items-center justify-center px-5">
@@ -42,31 +46,52 @@ const ProductVariantDetails = () => {
               font-bold
               text-[#f2a318]
               transition-colors
+              duration-300
               hover:text-[#075b5b]
             "
           >
-            Back To Products
+            ← Back To Products
           </Link>
         </div>
       </section>
     );
   }
 
-  /* Similar Products */
+  /* ================= SIMILAR PRODUCTS ================= */
   const similarProducts = productVariants.filter(
     (item) =>
-      String(item.categoryId) === String(product.id) && item.id !== variant.id,
+      String(item.categoryId) === String(product.id) &&
+      item.id !== variant.id
   );
+
+  /* ================= TABS ================= */
+  const tabs: {
+    id: TabType;
+    label: string;
+  }[] = [
+    {
+      id: "description",
+      label: "Description",
+    },
+    {
+      id: "features",
+      label: "Key Features",
+    },
+    {
+      id: "quality",
+      label: "Global Quality Standards",
+    },
+  ];
 
   return (
     <>
-      {/* Breadcrumb */}
+      {/* ================= BREADCRUMB ================= */}
       <Breadcrumb
         title={variant.name}
         backgroundImage="/images/breadcrumb.jpg"
       />
 
-      {/* Product Details */}
+      {/* ================= PRODUCT DETAILS ================= */}
       <section className="px-5 py-12 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-5xl">
           <div
@@ -78,7 +103,7 @@ const ProductVariantDetails = () => {
               lg:gap-12
             "
           >
-            {/* Product Image */}
+            {/* ================= PRODUCT IMAGE ================= */}
             <div
               className="
                 overflow-hidden
@@ -101,6 +126,7 @@ const ProductVariantDetails = () => {
                 <img
                   src={variant.image}
                   alt={variant.name}
+                  loading="lazy"
                   className="
                     h-[260px]
                     w-full
@@ -113,7 +139,7 @@ const ProductVariantDetails = () => {
               </div>
             </div>
 
-            {/* Product Content */}
+            {/* ================= PRODUCT CONTENT ================= */}
             <div className="flex flex-col">
               {/* Category */}
               <span
@@ -135,7 +161,7 @@ const ProductVariantDetails = () => {
                 {product.name}
               </span>
 
-              {/* Title */}
+              {/* Product Name */}
               <h1
                 className="
                   mt-4
@@ -149,7 +175,7 @@ const ProductVariantDetails = () => {
                 {variant.name}
               </h1>
 
-              {/* Description */}
+              {/* Short Description */}
               <p
                 className="
                   mt-5
@@ -162,7 +188,7 @@ const ProductVariantDetails = () => {
                 {variant.description}
               </p>
 
-              {/* Features */}
+              {/* Product Tags */}
               <div className="mt-6 flex flex-wrap gap-3">
                 <span
                   className="
@@ -189,7 +215,7 @@ const ProductVariantDetails = () => {
                     text-[#075b5b]
                   "
                 >
-                  Indian Origin
+                  {product.origin || "Indian Origin"}
                 </span>
 
                 <span
@@ -221,203 +247,181 @@ const ProductVariantDetails = () => {
         </div>
       </section>
 
-      {/* Description */}
+      {/* ================= TABS ================= */}
       <section className="px-5 pb-12 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-5xl">
           <div
             className="
-        overflow-hidden
-        rounded-[10px]
-        border
-        border-gray-200
-        bg-white
-        shadow-[0_4px_15px_rgba(0,0,0,0.03)]
-      "
+              overflow-hidden
+              rounded-[10px]
+              border
+              border-gray-200
+              bg-white
+              shadow-[0_4px_15px_rgba(0,0,0,0.04)]
+            "
           >
-            {/* Tabs */}
+            {/* ================= TAB BUTTONS ================= */}
             <div
               className="
-          flex
-          flex-wrap
-          border-b
-          border-gray-200
-          bg-gray-50
-        "
+                flex
+                overflow-x-auto
+                border-b
+                border-gray-200
+                bg-gray-50
+              "
             >
-              {/* Description */}
-              <button
-                type="button"
-                onClick={() => setActiveTab("description")}
-                className={`
-            border-r
-            border-gray-200
-            px-5
-            py-3
-            text-xs
-            transition-all
-            duration-300
-            ${
-              activeTab === "description"
-                ? "bg-[#075b5b] font-bold text-white"
-                : "bg-white font-medium text-gray-600 hover:bg-[#fbe4b8] hover:text-[#075b5b]"
-            }
-          `}
-              >
-                Description
-              </button>
+              {tabs.map((tab) => {
+                const isActive = activeTab === tab.id;
 
-              {/* Key Features */}
-              <button
-                type="button"
-                onClick={() => setActiveTab("features")}
-                className={`
-            border-r
-            border-gray-200
-            px-5
-            py-3
-            text-xs
-            transition-all
-            duration-300
-            ${
-              activeTab === "features"
-                ? "bg-[#075b5b] font-bold text-white"
-                : "bg-white font-medium text-gray-600 hover:bg-[#fbe4b8] hover:text-[#075b5b]"
-            }
-          `}
-              >
-                Key Features
-              </button>
-
-              {/* Global Quality */}
-              <button
-                type="button"
-                onClick={() => setActiveTab("quality")}
-                className={`
-            px-5
-            py-3
-            text-xs
-            transition-all
-            duration-300
-            ${
-              activeTab === "quality"
-                ? "bg-[#075b5b] font-bold text-white"
-                : "bg-white font-medium text-gray-600 hover:bg-[#fbe4b8] hover:text-[#075b5b]"
-            }
-          `}
-              >
-                Global Quality Standards
-              </button>
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`
+                      shrink-0
+                      border-r
+                      border-gray-200
+                      px-5
+                      py-3
+                      text-xs
+                      font-medium
+                      transition-all
+                      duration-300
+                      sm:px-6
+                      ${
+                        isActive
+                          ? "bg-[#075b5b] font-bold text-white"
+                          : "bg-white text-gray-600 hover:bg-[#fbe4b8] hover:text-[#075b5b]"
+                      }
+                    `}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
             </div>
 
-            {/* Single Content Div */}
-            <div className="min-h-[180px] p-6 sm:p-7">
-              {/* Description */}
+            {/* ================= TAB CONTENT ================= */}
+            <div className="min-h-[200px] p-6 sm:p-8">
+              {/* ================= DESCRIPTION ================= */}
               {activeTab === "description" && (
                 <div>
+                  <h3 className="mb-4 text-lg font-bold text-[#075b5b]">
+                    {variant.name}
+                  </h3>
+
                   <p className="text-sm leading-7 text-gray-600">
                     {variant.description}
                   </p>
-
-                  <p className="mt-5 text-sm leading-7 text-gray-600">
-                    This premium product is carefully selected and processed to
-                    maintain its natural quality, taste, aroma, and consistency.
-                    It is suitable for domestic as well as international
-                    markets.
-                  </p>
                 </div>
               )}
 
-              {/* Key Features */}
+              {/* ================= KEY FEATURES ================= */}
               {activeTab === "features" && (
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {[
-                    "Extra-long grain",
-                    "Excellent grain elongation",
-                    "Naturally aromatic",
-                    "Non-sticky texture",
-                    "Premium quality",
-                    "Ideal for biryani and pulao",
-                  ].map((feature) => (
-                    <div
-                      key={feature}
-                      className="
-                  flex
-                  items-center
-                  gap-3
-                  rounded-md
-                  bg-[#f8faf9]
-                  px-4
-                  py-3
-                "
-                    >
-                      <span
-                        className="
-                    flex
-                    h-6
-                    w-6
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#f2a318]
-                    text-xs
-                    font-bold
-                    text-white
-                  "
-                      >
-                        ✓
-                      </span>
+                <div>
+                  <h3 className="mb-5 text-lg font-bold text-[#075b5b]">
+                    Key Features
+                  </h3>
 
-                      <span className="text-sm text-gray-600">{feature}</span>
+                  {variant.keyFeatures?.length > 0 ? (
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {variant.keyFeatures.map((feature) => (
+                        <div
+                          key={feature}
+                          className="
+                            flex
+                            items-center
+                            gap-3
+                            rounded-lg
+                            bg-[#f8faf9]
+                            px-4
+                            py-3
+                          "
+                        >
+                          <span
+                            className="
+                              flex
+                              h-6
+                              w-6
+                              shrink-0
+                              items-center
+                              justify-center
+                              rounded-full
+                              bg-[#f2a318]
+                              text-xs
+                              font-bold
+                              text-white
+                            "
+                          >
+                            ✓
+                          </span>
+
+                          <span className="text-sm text-gray-600">
+                            {feature}
+                          </span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  ) : (
+                    <p className="text-sm text-gray-500">
+                      No key features available.
+                    </p>
+                  )}
                 </div>
               )}
 
-              {/* Global Quality Standards */}
+              {/* ================= GLOBAL QUALITY ================= */}
               {activeTab === "quality" && (
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {[
-                    "Premium quality selection",
-                    "Hygienically processed and packed",
-                    "Strict quality control",
-                    "Export-quality standards",
-                    "Carefully selected grains",
-                    "Suitable for international markets",
-                  ].map((standard) => (
-                    <div
-                      key={standard}
-                      className="
-                  flex
-                  items-center
-                  gap-3
-                  rounded-md
-                  bg-[#f8faf9]
-                  px-4
-                  py-3
-                "
-                    >
-                      <span
-                        className="
-                    flex
-                    h-6
-                    w-6
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-[#f2a318]
-                    text-xs
-                    font-bold
-                    text-white
-                  "
-                      >
-                        ✓
-                      </span>
+                <div>
+                  <h3 className="mb-5 text-lg font-bold text-[#075b5b]">
+                    Global Quality Standards
+                  </h3>
 
-                      <span className="text-sm text-gray-600">{standard}</span>
+                  {variant.globalQualityStandards?.length > 0 ? (
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {variant.globalQualityStandards.map((standard) => (
+                        <div
+                          key={standard}
+                          className="
+                            flex
+                            items-center
+                            gap-3
+                            rounded-lg
+                            bg-[#f8faf9]
+                            px-4
+                            py-3
+                          "
+                        >
+                          <span
+                            className="
+                              flex
+                              h-6
+                              w-6
+                              shrink-0
+                              items-center
+                              justify-center
+                              rounded-full
+                              bg-[#f2a318]
+                              text-xs
+                              font-bold
+                              text-white
+                            "
+                          >
+                            ✓
+                          </span>
+
+                          <span className="text-sm text-gray-600">
+                            {standard}
+                          </span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
+                  ) : (
+                    <p className="text-sm text-gray-500">
+                      No global quality standards available.
+                    </p>
+                  )}
                 </div>
               )}
             </div>
@@ -425,7 +429,7 @@ const ProductVariantDetails = () => {
         </div>
       </section>
 
-      {/* Back Button */}
+      {/* ================= BACK BUTTON ================= */}
       <div className="flex justify-center pb-12">
         <Button
           to={`/products/${product.id}`}
@@ -441,11 +445,11 @@ const ProductVariantDetails = () => {
         </Button>
       </div>
 
-      {/* Similar Products */}
+      {/* ================= SIMILAR PRODUCTS ================= */}
       {similarProducts.length > 0 && (
         <section className="px-5 pb-16 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-5xl">
-            {/* Section Heading */}
+            {/* Heading */}
             <div className="mb-7">
               <h2
                 className="
@@ -461,7 +465,7 @@ const ProductVariantDetails = () => {
               <div className="mt-2 h-1 w-12 rounded-full bg-[#f2a318]" />
             </div>
 
-            {/* 3 Products Per Row */}
+            {/* Product Grid */}
             <div
               className="
                 grid
@@ -480,6 +484,9 @@ const ProductVariantDetails = () => {
                   description={item.description}
                   image={item.image}
                   linkTo={`/products/${product.id}/${item.id}`}
+                  position={
+                    index % 2 === 0 ? "left" : "right"
+                  }
                 />
               ))}
             </div>

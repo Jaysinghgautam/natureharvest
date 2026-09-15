@@ -47,8 +47,7 @@ const ProductDetails = () => {
 
   /* Products belonging to selected category */
   const categoryProducts = productVariants.filter(
-    (item) =>
-      String(item.categoryId) === String(product.id)
+    (item) => String(item.categoryId) === String(product.id)
   );
 
   return (
@@ -104,7 +103,7 @@ const ProductDetails = () => {
               </h1>
             </div>
 
-            {/* Description */}
+            {/* Category Description */}
             <p
               className="
                 text-sm
@@ -112,10 +111,7 @@ const ProductDetails = () => {
                 text-gray-600
               "
             >
-              We offer a wide range of premium agricultural products,
-              including various rice varieties, pulses, spices, millets,
-              and more. Our products are sourced sustainably, ensuring
-              the highest quality for our customers worldwide.
+              {product.description}
             </p>
           </div>
         </div>
@@ -195,4 +191,3 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
- 
