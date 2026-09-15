@@ -1,4 +1,4 @@
- 
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import Breadcrumb from "../components/Breadcrub";
@@ -13,15 +13,17 @@ const ProductVariantDetails = () => {
     variantId: string;
   }>();
 
-  const product = products.find(
-    (item) => String(item.id) === String(id)
-  );
+  const product = products.find((item) => String(item.id) === String(id));
 
   const variant = productVariants.find(
     (item) =>
       String(item.id) === String(variantId) &&
-      String(item.categoryId) === String(id)
+      String(item.categoryId) === String(id),
   );
+
+  const [activeTab, setActiveTab] = useState<
+    "description" | "features" | "quality"
+  >("description");
 
   /* Product Not Found */
   if (!product || !variant) {
@@ -43,7 +45,7 @@ const ProductVariantDetails = () => {
               hover:text-[#075b5b]
             "
           >
-            ← Back To Products
+            Back To Products
           </Link>
         </div>
       </section>
@@ -53,8 +55,7 @@ const ProductVariantDetails = () => {
   /* Similar Products */
   const similarProducts = productVariants.filter(
     (item) =>
-      String(item.categoryId) === String(product.id) &&
-      item.id !== variant.id
+      String(item.categoryId) === String(product.id) && item.id !== variant.id,
   );
 
   return (
@@ -225,26 +226,200 @@ const ProductVariantDetails = () => {
         <div className="mx-auto max-w-5xl">
           <div
             className="
-              overflow-hidden
-              rounded-[10px]
-              border
-              border-gray-200
-              bg-white
-              shadow-[0_4px_15px_rgba(0,0,0,0.03)]
-            "
+        overflow-hidden
+        rounded-[10px]
+        border
+        border-gray-200
+        bg-white
+        shadow-[0_4px_15px_rgba(0,0,0,0.03)]
+      "
           >
-            {/* Header */}
-            <div className="bg-[#075b5b] px-6 py-3">
-              <h2 className="text-sm font-bold text-white">
+            {/* Tabs */}
+            <div
+              className="
+          flex
+          flex-wrap
+          border-b
+          border-gray-200
+          bg-gray-50
+        "
+            >
+              {/* Description */}
+              <button
+                type="button"
+                onClick={() => setActiveTab("description")}
+                className={`
+            border-r
+            border-gray-200
+            px-5
+            py-3
+            text-xs
+            transition-all
+            duration-300
+            ${
+              activeTab === "description"
+                ? "bg-[#075b5b] font-bold text-white"
+                : "bg-white font-medium text-gray-600 hover:bg-[#fbe4b8] hover:text-[#075b5b]"
+            }
+          `}
+              >
                 Description
-              </h2>
+              </button>
+
+              {/* Key Features */}
+              <button
+                type="button"
+                onClick={() => setActiveTab("features")}
+                className={`
+            border-r
+            border-gray-200
+            px-5
+            py-3
+            text-xs
+            transition-all
+            duration-300
+            ${
+              activeTab === "features"
+                ? "bg-[#075b5b] font-bold text-white"
+                : "bg-white font-medium text-gray-600 hover:bg-[#fbe4b8] hover:text-[#075b5b]"
+            }
+          `}
+              >
+                Key Features
+              </button>
+
+              {/* Global Quality */}
+              <button
+                type="button"
+                onClick={() => setActiveTab("quality")}
+                className={`
+            px-5
+            py-3
+            text-xs
+            transition-all
+            duration-300
+            ${
+              activeTab === "quality"
+                ? "bg-[#075b5b] font-bold text-white"
+                : "bg-white font-medium text-gray-600 hover:bg-[#fbe4b8] hover:text-[#075b5b]"
+            }
+          `}
+              >
+                Global Quality Standards
+              </button>
             </div>
 
-            {/* Content */}
-            <div className="p-6">
-              <p className="text-sm leading-7 text-gray-600">
-                {variant.description}
-              </p>
+            {/* Single Content Div */}
+            <div className="min-h-[180px] p-6 sm:p-7">
+              {/* Description */}
+              {activeTab === "description" && (
+                <div>
+                  <p className="text-sm leading-7 text-gray-600">
+                    {variant.description}
+                  </p>
+
+                  <p className="mt-5 text-sm leading-7 text-gray-600">
+                    This premium product is carefully selected and processed to
+                    maintain its natural quality, taste, aroma, and consistency.
+                    It is suitable for domestic as well as international
+                    markets.
+                  </p>
+                </div>
+              )}
+
+              {/* Key Features */}
+              {activeTab === "features" && (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {[
+                    "Extra-long grain",
+                    "Excellent grain elongation",
+                    "Naturally aromatic",
+                    "Non-sticky texture",
+                    "Premium quality",
+                    "Ideal for biryani and pulao",
+                  ].map((feature) => (
+                    <div
+                      key={feature}
+                      className="
+                  flex
+                  items-center
+                  gap-3
+                  rounded-md
+                  bg-[#f8faf9]
+                  px-4
+                  py-3
+                "
+                    >
+                      <span
+                        className="
+                    flex
+                    h-6
+                    w-6
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-[#f2a318]
+                    text-xs
+                    font-bold
+                    text-white
+                  "
+                      >
+                        ✓
+                      </span>
+
+                      <span className="text-sm text-gray-600">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Global Quality Standards */}
+              {activeTab === "quality" && (
+                <div className="grid gap-3 sm:grid-cols-2">
+                  {[
+                    "Premium quality selection",
+                    "Hygienically processed and packed",
+                    "Strict quality control",
+                    "Export-quality standards",
+                    "Carefully selected grains",
+                    "Suitable for international markets",
+                  ].map((standard) => (
+                    <div
+                      key={standard}
+                      className="
+                  flex
+                  items-center
+                  gap-3
+                  rounded-md
+                  bg-[#f8faf9]
+                  px-4
+                  py-3
+                "
+                    >
+                      <span
+                        className="
+                    flex
+                    h-6
+                    w-6
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-[#f2a318]
+                    text-xs
+                    font-bold
+                    text-white
+                  "
+                      >
+                        ✓
+                      </span>
+
+                      <span className="text-sm text-gray-600">{standard}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -316,4 +491,3 @@ const ProductVariantDetails = () => {
 };
 
 export default ProductVariantDetails;
- 

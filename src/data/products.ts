@@ -113,8 +113,8 @@ export const products: Product[] = [
   },
 ];
 
-/* Individual products inside each category */
 
+/* Individual products inside each category */
 export const productVariants: ProductVariant[] = [
   {
     id: "basmati-1121",

@@ -7,48 +7,57 @@ import Breadcrumb from "../components/Breadcrub";
 const galleryImages = [
   {
     id: 1,
-    src: "https://natureharvest.co.in/about-us/1.jpg",
+    src: "/gallary/image1.jpg",
     alt: "Nature Harvest Gallery 1",
   },
   {
     id: 2,
-    src: "https://natureharvest.co.in/about-us/2.jpg",
+    src: "/gallary/image2.jpg",
     alt: "Nature Harvest Gallery 2",
   },
   {
     id: 3,
-    src: "https://natureharvest.co.in/about-us/mission.jpg",
+    src: "/gallary/image3.jpg",
     alt: "Nature Harvest Gallery 3",
   },
   {
     id: 4,
-    src: "https://natureharvest.co.in/about-us/commitment.jpg",
+    src: "/gallary/image4.jpg",
     alt: "Nature Harvest Gallery 4",
   },
   {
     id: 5,
-    src: "https://natureharvest.co.in/about-us/identity.jpg",
+    src: "/gallary/image5.jpg",
     alt: "Nature Harvest Gallery 5",
   },
   {
     id: 6,
-    src: "https://natureharvest.co.in/about-us/whyus.png",
+    src: "/gallary/image6.jpg",
     alt: "Nature Harvest Gallery 6",
   },
   {
     id: 7,
-    src: "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80",
+    src: "/gallary/image7.jpg",
     alt: "Nature Harvest Gallery 7",
   },
   {
     id: 8,
-    src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80",
+    src: "/gallary/image8.jpg",
     alt: "Nature Harvest Gallery 8",
   },
   {
     id: 9,
-    src: "https://natureharvest.co.in/about-us/director.jpg",
+    src: "/gallary/image9.jpg",
     alt: "Nature Harvest Gallery 9",
+  },{
+    id: 10,
+    src: "/gallary/image10.jpg",
+    alt: "Nature Harvest Gallery 10",
+  },
+  {
+    id: 11,
+    src: "/gallary/image11.jpg",
+    alt: "Nature Harvest Gallery 11",
   },
 ];
 
