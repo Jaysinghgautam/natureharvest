@@ -182,7 +182,7 @@ const Breadcrumb = ({
         <div
           className="
             absolute bottom-[-10px] left-0 right-[-8px] top-[10px]
-            rounded-br-[20px] rounded-bl-[100px] rounded-tr-[100px]
+             rounded-bl-[100px] rounded-tr-[100px]
             bg-[#35B8AD]
             sm:rounded-bl-[130px] sm:rounded-tr-[130px]
             lg:rounded-bl-[160px] lg:rounded-tr-[160px]

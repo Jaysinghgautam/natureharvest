@@ -1,3 +1,4 @@
+ 
 import { Link, useParams } from "react-router-dom";
 
 import Breadcrumb from "../components/Breadcrub";
@@ -22,6 +23,7 @@ const ProductVariantDetails = () => {
       String(item.categoryId) === String(id)
   );
 
+  /* Product Not Found */
   if (!product || !variant) {
     return (
       <section className="flex min-h-[70vh] items-center justify-center px-5">
@@ -32,7 +34,14 @@ const ProductVariantDetails = () => {
 
           <Link
             to="/products"
-            className="mt-5 inline-block font-bold text-[#f2a318]"
+            className="
+              mt-5
+              inline-block
+              font-bold
+              text-[#f2a318]
+              transition-colors
+              hover:text-[#075b5b]
+            "
           >
             ← Back To Products
           </Link>
@@ -41,6 +50,7 @@ const ProductVariantDetails = () => {
     );
   }
 
+  /* Similar Products */
   const similarProducts = productVariants.filter(
     (item) =>
       String(item.categoryId) === String(product.id) &&
@@ -49,52 +59,154 @@ const ProductVariantDetails = () => {
 
   return (
     <>
+      {/* Breadcrumb */}
       <Breadcrumb
         title={variant.name}
         backgroundImage="/images/breadcrumb.jpg"
       />
 
-      {/* Product */}
+      {/* Product Details */}
       <section className="px-5 py-12 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-5xl">
-          <div className="grid gap-8 md:grid-cols-[280px_1fr] md:items-start">
-            {/* Image */}
-            <div className="overflow-hidden rounded-[12px] border border-[#f2a318] bg-white p-2 shadow-[0_5px_20px_rgba(0,0,0,0.06)]">
-              <img
-                src={variant.image}
-                alt={variant.name}
-                className="h-[230px] w-full rounded-[5px] object-cover"
-              />
+          <div
+            className="
+              grid
+              gap-8
+              md:grid-cols-[300px_1fr]
+              md:items-start
+              lg:gap-12
+            "
+          >
+            {/* Product Image */}
+            <div
+              className="
+                overflow-hidden
+                rounded-tl-[45px]
+                rounded-br-[45px]
+                border
+                border-[#f2a318]
+                bg-white
+                p-2.5
+                shadow-[0_5px_20px_rgba(0,0,0,0.06)]
+              "
+            >
+              <div
+                className="
+                  overflow-hidden
+                  rounded-tr-[35px]
+                  rounded-bl-[35px]
+                "
+              >
+                <img
+                  src={variant.image}
+                  alt={variant.name}
+                  className="
+                    h-[260px]
+                    w-full
+                    object-cover
+                    transition-transform
+                    duration-500
+                    hover:scale-105
+                  "
+                />
+              </div>
             </div>
 
-            {/* Content */}
-            <div>
-              <span className="inline-flex rounded-tl-[20px] rounded-tr-[20px] bg-[#fbe4b8] px-5 py-2 text-xs font-semibold uppercase tracking-wider text-[#173f40]">
+            {/* Product Content */}
+            <div className="flex flex-col">
+              {/* Category */}
+              <span
+                className="
+                  inline-flex
+                  w-fit
+                  rounded-tl-[20px]
+                  rounded-br-[20px]
+                  bg-[#fbe4b8]
+                  px-5
+                  py-2
+                  text-xs
+                  font-semibold
+                  uppercase
+                  tracking-wider
+                  text-[#173f40]
+                "
+              >
                 {product.name}
               </span>
 
-              <h1 className="mt-4 text-3xl font-bold text-[#075b5b] sm:text-4xl">
+              {/* Title */}
+              <h1
+                className="
+                  mt-4
+                  text-3xl
+                  font-bold
+                  leading-tight
+                  text-[#075b5b]
+                  sm:text-4xl
+                "
+              >
                 {variant.name}
               </h1>
 
-              <p className="mt-5 text-sm leading-7 text-gray-600">
+              {/* Description */}
+              <p
+                className="
+                  mt-5
+                  max-w-2xl
+                  text-sm
+                  leading-7
+                  text-gray-600
+                "
+              >
                 {variant.description}
               </p>
 
+              {/* Features */}
               <div className="mt-6 flex flex-wrap gap-3">
-                <span className="rounded-full bg-[#fbe4b8] px-4 py-2 text-xs font-semibold text-[#075b5b]">
+                <span
+                  className="
+                    rounded-full
+                    bg-[#fbe4b8]
+                    px-4
+                    py-2
+                    text-xs
+                    font-semibold
+                    text-[#075b5b]
+                  "
+                >
                   Premium Quality
                 </span>
 
-                <span className="rounded-full bg-[#fbe4b8] px-4 py-2 text-xs font-semibold text-[#075b5b]">
+                <span
+                  className="
+                    rounded-full
+                    bg-[#fbe4b8]
+                    px-4
+                    py-2
+                    text-xs
+                    font-semibold
+                    text-[#075b5b]
+                  "
+                >
                   Indian Origin
                 </span>
 
-                <span className="rounded-full bg-[#fbe4b8] px-4 py-2 text-xs font-semibold text-[#075b5b]">
+                <span
+                  className="
+                    rounded-full
+                    bg-[#fbe4b8]
+                    px-4
+                    py-2
+                    text-xs
+                    font-semibold
+                    text-[#075b5b]
+                  "
+                >
                   Export Quality
                 </span>
               </div>
 
+              {/* Contact Button */}
               <div className="mt-7">
                 <Button
                   href="https://wa.me/918448028999"
@@ -111,13 +223,24 @@ const ProductVariantDetails = () => {
       {/* Description */}
       <section className="px-5 pb-12 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-5xl">
-          <div className="overflow-hidden rounded-[8px] border border-gray-200">
+          <div
+            className="
+              overflow-hidden
+              rounded-[10px]
+              border
+              border-gray-200
+              bg-white
+              shadow-[0_4px_15px_rgba(0,0,0,0.03)]
+            "
+          >
+            {/* Header */}
             <div className="bg-[#075b5b] px-6 py-3">
               <h2 className="text-sm font-bold text-white">
                 Description
               </h2>
             </div>
 
+            {/* Content */}
             <div className="p-6">
               <p className="text-sm leading-7 text-gray-600">
                 {variant.description}
@@ -127,11 +250,17 @@ const ProductVariantDetails = () => {
         </div>
       </section>
 
-      {/* Back */}
+      {/* Back Button */}
       <div className="flex justify-center pb-12">
         <Button
           to={`/products/${product.id}`}
-          className="min-h-[40px] min-w-[165px] px-6 py-2 text-xs"
+          className="
+            min-h-[40px]
+            min-w-[165px]
+            px-6
+            py-2
+            text-xs
+          "
         >
           Back To {product.name}
         </Button>
@@ -141,12 +270,33 @@ const ProductVariantDetails = () => {
       {similarProducts.length > 0 && (
         <section className="px-5 pb-16 sm:px-8 lg:px-10">
           <div className="mx-auto max-w-5xl">
-            <h2 className="mb-6 text-2xl font-bold text-[#075b5b]">
-              Similar Products
-            </h2>
+            {/* Section Heading */}
+            <div className="mb-7">
+              <h2
+                className="
+                  text-2xl
+                  font-bold
+                  text-[#075b5b]
+                  sm:text-3xl
+                "
+              >
+                Similar Products
+              </h2>
 
-            <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
-              {similarProducts.slice(0, 4).map((item, index) => (
+              <div className="mt-2 h-1 w-12 rounded-full bg-[#f2a318]" />
+            </div>
+
+            {/* 3 Products Per Row */}
+            <div
+              className="
+                grid
+                grid-cols-1
+                gap-6
+                sm:grid-cols-2
+                lg:grid-cols-3
+              "
+            >
+              {similarProducts.slice(0, 6).map((item, index) => (
                 <ProductCard
                   key={item.id}
                   id={item.id}
@@ -166,3 +316,4 @@ const ProductVariantDetails = () => {
 };
 
 export default ProductVariantDetails;
+ 

@@ -258,7 +258,7 @@ const fadeUpItem: Variants = {
 
 const BI = () => {
   return (
-    <div className="min-h-screen bg-[#f8f9fa] pb-16 lg:pb-24">
+    <div className="min-h-screen bg-none pb-16 lg:pb-24">
       {/* Breadcrumb */}
       <Breadcrumb
         title="Business Intelligence"
@@ -314,7 +314,7 @@ const BI = () => {
               transition={{ duration: 0.7 }}
               className="group relative h-[350px] w-full sm:h-[450px]"
             >
-              <div className="absolute inset-0 overflow-hidden rounded-bl-2xl rounded-br-[80px] rounded-tl-[80px] rounded-tr-2xl border-4 border-white shadow-xl">
+              <div className="absolute inset-0 overflow-hidden rounded-bl-none rounded-br-[80px] rounded-tl-[80px] rounded-tr-none border-4 border-white shadow-xl">
                 <img
                   src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80"
                   alt="Business Intelligence Dashboard"

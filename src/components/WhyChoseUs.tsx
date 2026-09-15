@@ -100,7 +100,7 @@ const WhyChooseUs = () => {
           >
             {/* Trusted Partner Banner */}
             <div className="relative mb-10 h-[125px] w-full max-w-[550px] lg:w-[115%]">
-              <div className="absolute left-0 top-0 z-20 flex h-full w-[45%] items-center rounded-br-[65px] bg-[#07564f] px-6 shadow-lg sm:px-8">
+              <div className="absolute left-0 top-0 z-20 flex h-full w-[45%] items-center rounded-br-[50px] rounded-tl-[50px] bg-[#07564f] px-6 shadow-lg sm:px-8">
                 <h3 className="text-2xl font-bold leading-[1.05] text-white sm:text-[27px]">
                   Your
                   <br />
@@ -110,7 +110,7 @@ const WhyChooseUs = () => {
                 </h3>
               </div>
 
-              <div className="absolute left-[35%] top-0 z-10 flex h-full w-[65%] items-center rounded-r-[20px] bg-[#f2a619] pl-[15%] pr-4">
+              <div className="absolute left-[35%] top-0 z-10 flex h-full w-[65%] items-center rounded-br-[50px] bg-[#f2a619] pl-[15%] pr-4">
                 <p className="text-base leading-[1.2] text-[#073f41] sm:text-[18px]">
                   Finest of India,
                   <br />
@@ -185,9 +185,9 @@ const WhyChooseUs = () => {
               className="
                 relative h-[450px]
                 w-full overflow-hidden
-                rounded-tr-[90px]
-                rounded-br-[90px]
-                rounded-bl-[90px]
+                rounded-tr-[60px]
+                rounded-tl-none
+                rounded-bl-[60px]
                 shadow-xl
                 sm:h-[550px]
                 lg:h-[680px]

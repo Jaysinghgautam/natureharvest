@@ -161,7 +161,7 @@ const OurStory = () => {
             {...slideLeft}
             className="flex flex-col gap-5 sm:gap-6"
           >
-            <div className="group h-[200px] w-full overflow-hidden rounded-tl-2xl rounded-tr-[80px] rounded-bl-[80px] rounded-br-2xl shadow-md sm:h-[280px]">
+            <div className="group h-[200px] w-full overflow-hidden rounded-tr-[60px] rounded-bl-[60px] shadow-md sm:h-[280px]">
               <img
                 src="https://natureharvest.co.in/about-us/1.jpg"
                 alt="Hands holding soil"
@@ -169,7 +169,7 @@ const OurStory = () => {
               />
             </div>
 
-            <div className="group h-[200px] w-full overflow-hidden rounded-tl-[80px] rounded-tr-2xl rounded-bl-2xl rounded-br-[80px] shadow-md sm:h-[280px]">
+            <div className="group h-[200px] w-full overflow-hidden rounded-tl-[80px] rounded-tr-none rounded-bl-none rounded-br-[80px] shadow-md sm:h-[280px]">
               <img
                 src="https://natureharvest.co.in/about-us/2.jpg"
                 alt="Solar panels in a field"

@@ -119,9 +119,9 @@ const Gallery = () => {
                 h-[250px]
                 w-full
                 overflow-hidden
-                rounded-tl-[40px]
-                rounded-tr-[40px]
-                rounded-bl-[40px]
+                rounded-tl-none
+                rounded-tr-[50px]
+                rounded-bl-[50px]
                 rounded-br-none
                 bg-gray-100
                 shadow-sm

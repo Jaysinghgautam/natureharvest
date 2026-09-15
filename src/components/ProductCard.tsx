@@ -1,6 +1,7 @@
  import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useAppContext } from "../context/AppContext";
+import Button from "../components/Button";
 
 type ProductCardProps = {
   id: string;
@@ -34,25 +35,30 @@ const ProductCard = ({
     <motion.article
       initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -4 }}
+      whileHover={{ y: -5 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.45, ease: "easeOut" }}
+      transition={{
+        duration: 0.45,
+        ease: "easeOut",
+      }}
       className="
         group
         flex
         w-full
-        max-w-[174px]
         flex-col
         overflow-hidden
-        rounded-[10px]
-        border
+        rounded-tl-[22px]
+        rounded-br-[22px]
+        rounded-tr-none
+        rounded-bl-none
+        border-2
         border-[#f2a318]
         bg-white
-        p-2.5
-        shadow-[0_4px_12px_rgba(0,0,0,0.04)]
-        transition-shadow
+        p-[18px]
+        shadow-[0_3px_12px_rgba(0,0,0,0.04)]
+        transition-all
         duration-300
-        hover:shadow-[0_8px_20px_rgba(0,0,0,0.1)]
+        hover:shadow-[0_8px_22px_rgba(0,0,0,0.10)]
       "
     >
       {/* Product Image */}
@@ -63,10 +69,14 @@ const ProductCard = ({
         className="
           relative
           block
-          h-[115px]
+          h-[230px]
           w-full
           overflow-hidden
-          rounded-[3px]
+          rounded-tr-[30px]
+          rounded-bl-[30px]
+          rounded-tl-none
+          rounded-br-none
+          bg-gray-100
         "
       >
         <img
@@ -79,10 +89,12 @@ const ProductCard = ({
             object-cover
             transition-transform
             duration-500
-            group-hover:scale-105
+            ease-out
+            group-hover:scale-[1.04]
           "
         />
 
+        {/* Image Hover Overlay */}
         <div
           className="
             absolute
@@ -96,13 +108,29 @@ const ProductCard = ({
       </Link>
 
       {/* Product Content */}
-      <div className="flex flex-1 flex-col px-1.5 pt-2 text-center">
-        <Link to={productUrl} onClick={handleClick}>
+      <div
+        className="
+          flex
+          flex-1
+          flex-col
+          items-center
+          px-2
+          pt-5
+          text-center
+        "
+      >
+        {/* Product Name */}
+        <Link
+          to={productUrl}
+          onClick={handleClick}
+          className="block"
+        >
           <h3
             className="
-              text-[11px]
+              min-h-[30px]
+              text-[18px]
               font-bold
-              leading-4
+              leading-6
               text-[#075b5b]
               transition-colors
               duration-300
@@ -113,49 +141,50 @@ const ProductCard = ({
           </h3>
         </Link>
 
+        {/* Product Description */}
         <p
           className="
-            mt-2
-            line-clamp-4
-            min-h-[56px]
-            text-[8.5px]
-            leading-[1.55]
-            text-gray-500
+            mt-3
+            min-h-[72px]
+            max-w-[330px]
+            line-clamp-3
+            text-[14px]
+            leading-6
+            text-[#5f6878]
           "
         >
           {description}
         </p>
 
-        {/* Know More */}
-        <Link
-          to={productUrl}
-          onClick={handleClick}
-          className="
-            mx-auto
-            mt-3
-            inline-flex
-            min-h-[27px]
-            min-w-[80px]
-            items-center
-            justify-center
-            rounded-tr-[25px]
-            rounded-bl-[25px]
-            bg-[#f2a318]
-            px-4
-            py-1.5
-            text-[9px]
-            font-bold
-            text-black
-            shadow-[0_3px_8px_rgba(242,163,24,0.2)]
-            transition-all
-            duration-300
-            hover:-translate-y-0.5
-            hover:bg-[#d98d0b]
-            hover:shadow-[0_5px_12px_rgba(242,163,24,0.3)]
-          "
-        >
-          Know More
-        </Link>
+        {/* Know More Button */}
+        <div className="mt-5 flex justify-center">
+          <Button
+            to={productUrl}
+            onClick={handleClick}
+            className="
+              min-h-[50px]
+              min-w-[165px]
+              rounded-tl-none
+              rounded-tr-[35px]
+              rounded-br-none
+              rounded-bl-[35px]
+              bg-[#f2a318]
+              px-7
+              py-3
+              text-[15px]
+              font-bold
+              text-black
+              shadow-none
+              transition-all
+              duration-300
+              hover:-translate-y-0.5
+              hover:bg-[#d98d0b]
+              hover:shadow-[0_5px_12px_rgba(242,163,24,0.25)]
+            "
+          >
+            Know More
+          </Button>
+        </div>
       </div>
     </motion.article>
   );

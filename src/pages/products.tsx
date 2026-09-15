@@ -209,7 +209,7 @@ const Products = () => {
               className="group flex flex-col items-center overflow-hidden rounded-tl-[55px] rounded-br-[55px] border-2 border-[#f2a318] bg-white p-5 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_18px_40px_rgba(0,0,0,0.10)] sm:p-6"
             >
               {/* Image */}
-              <div className="relative mb-6 h-56 w-full overflow-hidden rounded-tr-[45px] rounded-bl-[45px] rounded-tl-xl sm:h-64">
+              <div className="relative mb-6 h-56 w-full overflow-hidden rounded-tr-[50px] rounded-bl-[50px] rounded-br-none rounded-tl-none sm:h-64">
                 <img
                   src={product.image}
                   alt={product.title}

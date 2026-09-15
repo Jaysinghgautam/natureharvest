@@ -85,8 +85,8 @@ const OurStory = () => {
                 h-[390px]
                 overflow-hidden
                 rounded-tr-[75px]
-                rounded-br-[75px]
                 rounded-bl-[75px]
+                rounded-br-none
                 shadow-[0_20px_55px_rgba(0,0,0,0.12)]
                 sm:h-[480px]
                 lg:h-[540px]
