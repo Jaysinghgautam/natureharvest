@@ -317,28 +317,51 @@ export const productVariants: ProductVariant[] = [
   {
     id: "spices-turmeric",
     categoryId: "3",
-    name: "Turmeric",
+    name: "Chili (Whole and Powdered)",
     description:
-      "Premium Indian turmeric selected for its natural colour, aroma, flavour and consistent quality.",
-
-    image: "/images/spices.jpg",
+      "Chili is a globally loved spice known for its fiery heat, deep red color, and bold flavor. Sourced from the best chili-growing regions, our chili variants range from mildly pungent to extremely hot, making them suitable for diverse cuisines. Chili powder is commonly used in Indian, Mexican, and Asian dishes, adding a spicy kick to curries, marinades, and sauces. Whole chilies are widely used in seasoning blends, pickles, and infused oils, enhancing both flavor and presentation.",
+    image: "/images/Red Chilli.png",
 
     keyFeatures: [
-      "Natural golden colour",
-      "Distinctive aroma",
-      "Rich natural flavour",
-      "Carefully sourced",
-      "Suitable for food applications",
-      "Premium quality selection",
+      "Vivid red color and bold flavor",
+      "Available in various heat levels (mild to extra hot)",
+      "Sourced from premium chili-growing regions",
+      "Essential for Indian, Mexican, and Asian cuisines",
+      "Available in whole, crushed, and powdered forms",
+      "Rich in vitamins and antioxidants",
     ],
 
     globalQualityStandards: [
-      "Premium quality selection",
-      "Strict quality inspection",
-      "Hygienically processed",
-      "Export-quality standards",
-      "Consistent colour and quality",
-      "International market suitability",
+      "FSSAI Certified",
+      "APEDA Registered",
+      "ISO 22000 Compliant",
+      "HACCP Certified",
+      "Phytosanitary Certified",
+    ],
+  },
+
+  {
+    id: "spices-cumin",
+    categoryId: "3",
+    name: "Turmeric (Whole and Powdered)",
+    description:
+      "Turmeric is a bright yellow spice with a warm, earthy flavor and a distinctive aroma. It is prized globally not only for its culinary applications but also for its powerful health benefits, driven by its high curcumin content. Used extensively in curries, rice dishes, and health drinks like 'Golden Milk', turmeric acts as a natural food coloring and a potent anti-inflammatory agent. We offer premium turmeric in both whole root and finely milled powder forms.",
+    image: "/images/turmeric.png",
+
+    keyFeatures: [
+      "High curcumin content for maximum health benefits",
+      "Vibrant golden color and earthy aroma",
+      "Natural anti-inflammatory and antioxidant properties",
+      "Available in whole fingers and fine powder",
+      "100% natural, no added colors or preservatives",
+      "Widely used in culinary and medicinal applications",
+    ],
+
+    globalQualityStandards: [
+      "FSSAI Certified",
+      "Spices Board of India Registered",
+      "ISO 22000 Compliant",
+      "Organic Certification Available",
     ],
   },
 
@@ -347,26 +370,95 @@ export const productVariants: ProductVariant[] = [
     categoryId: "3",
     name: "Cumin Seeds",
     description:
-      "Aromatic Indian cumin seeds carefully sourced for food, spice and international markets.",
-
-    image: "/images/spices.jpg",
+      "Cumin seeds are an essential spice characterized by their distinct aromatic, earthy, and slightly bitter flavor. They are a foundational ingredient in spice blends like Garam Masala, Taco Seasoning, and Curry Powder. Our cumin seeds are carefully harvested and cleaned to ensure maximum purity and flavor retention. They are widely used in tempering (tadka) for dals, roasted for seasoning, or ground into powder for marinades and soups.",
+    image: "/images/Cumin Seeds.png",
 
     keyFeatures: [
-      "Strong natural aroma",
-      "Distinctive flavour",
-      "Carefully selected seeds",
-      "Consistent size and quality",
-      "Suitable for food applications",
-      "Versatile culinary use",
+      "Intense earthy and warm flavor profile",
+      "High essential oil content",
+      "Available whole or ground",
+      "Aids in digestion and gut health",
+      "Machine-cleaned for 99% purity",
+      "A staple in Latin American, Middle Eastern, and Indian cuisines",
     ],
 
     globalQualityStandards: [
-      "Premium quality selection",
-      "Strict quality control",
-      "Hygienically processed",
-      "Export-quality standards",
-      "Consistent product quality",
-      "Suitable for international buyers",
+      "FSSAI Certified",
+      "Spices Board of India Registered",
+      "ISO 22000 Compliant",
+      "HACCP Certified",
+    ],
+  },
+  {
+    id: "spices-cumin",
+    categoryId: "3",
+    name: "Coriander Seeds",
+    description:
+      "Coriander seeds offer a warm, nutty, and slightly citrusy flavor, making them one of the most versatile spices in the culinary world. They are the dried fruit of the cilantro plant and are universally used in curries, pickling spices, and sausages. Our coriander seeds are selected for their bright color, bold size, and high volatile oil content, ensuring a fresh and aromatic addition to any dish.",
+    image: "/images/Coriander Seeds.png",
+
+    keyFeatures: [
+      "Warm, mild, and citrusy flavor",
+      "Rich in dietary fiber and antioxidants",
+      "Available whole or finely ground",
+      "Essential ingredient in curry powders",
+      "Used extensively in pickling and baking",
+      "Sourced directly from premium farms",
+    ],
+
+    globalQualityStandards: [
+      "FSSAI Certified",
+      "Spices Board of India Registered",
+      "ISO 22000 Compliant",
+    ],
+  },
+  {
+    id: "spices-cumin",
+    categoryId: "3",
+    name: "Black Pepper",
+    description:
+      'Black Pepper, often referred to as the "King of Spices," is the most widely traded spice in the world. Our Indian black pepper is celebrated for its sharp, pungent aroma and robust, biting flavor, owed to its high piperine content. It is an indispensable seasoning used in almost every culinary tradition, enhancing the flavor of meats, soups, salads, and even desserts. We offer various grades of black pepper, from bold whole peppercorns to freshly ground powder.',
+    image: "/images/Black Pepper.png",
+
+    keyFeatures: [
+      "High piperine content for a sharp, bold bite",
+      "Premium 'bold' size peppercorns available",
+      "Rich aroma and strong flavor profile",
+      "Natural digestive aid",
+      "Available in whole, cracked, and powdered forms",
+      "Sourced from the Malabar coast of India",
+    ],
+
+    globalQualityStandards: [
+      "FSSAI Certified",
+      "Spices Board of India Registered",
+      "ISO 22000 Compliant",
+      "HACCP Certified",
+      "Rainforest Alliance Certified (Select Lots)",
+    ],
+  },
+  {
+    id: "spices-cumin",
+    categoryId: "3",
+    name: "Black Pepper",
+    description:
+      'Known as the "Queen of Spices," green cardamom is highly valued for its complex, sweet, and floral fragrance with hints of mint and lemon. It is one of the most expensive spices by weight but requires only a small amount to impart its intense flavor. Cardamom is incredibly versatile, featuring prominently in traditional Indian sweets, Scandinavian baking, Middle Eastern coffee, and savory curries. Our cardamom pods are hand-picked to ensure optimal ripeness and color retention.',
+    image: "/images/Cardamom (Green).png",
+
+    keyFeatures: [
+      "Sweet, floral, and highly aromatic flavor",
+      "Premium green pods with full seeds",
+      "Essential for desserts, baking, and beverages",
+      "Natural breath freshener and digestive",
+      "Carefully hand-picked and graded by size",
+      "Available as whole pods or ground powder",
+    ],
+
+    globalQualityStandards: [
+      "FSSAI Certified",
+      "Spices Board of India Registered",
+      "ISO 22000 Compliant",
+      "Phytosanitary Certified",
     ],
   },
 ];

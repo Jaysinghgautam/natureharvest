@@ -284,7 +284,7 @@ const Products = () => {
             <div className="flex flex-col gap-5">
               <div className="h-48 w-full overflow-hidden rounded-tr-[70px] rounded-bl-[70px] bg-gray-100 shadow-md sm:h-56">
                 <img
-                  src="https://natureharvest.co.in/about-us/quality-1.jpg"
+                  src="/images/global1.webp"
                   alt="Quality Control Expert"
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
                 />
@@ -292,7 +292,7 @@ const Products = () => {
 
               <div className="h-48 w-full overflow-hidden rounded-tl-[70px] rounded-br-[70px] bg-gray-100 shadow-md sm:h-56">
                 <img
-                  src="https://natureharvest.co.in/about-us/quality-2.jpg"
+                  src="/images/scientific.jpeg"
                   alt="Field Inspection"
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
                 />
