@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Star } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 
 import Breadcrumb from "../components/Breadcrub";
@@ -18,15 +19,13 @@ const ProductVariantDetails = () => {
   const [activeTab, setActiveTab] = useState<TabType>("description");
 
   /* ================= FIND CATEGORY ================= */
-  const product = products.find(
-    (item) => String(item.id) === String(id)
-  );
+  const product = products.find((item) => String(item.id) === String(id));
 
   /* ================= FIND VARIANT ================= */
   const variant = productVariants.find(
     (item) =>
       String(item.id) === String(variantId) &&
-      String(item.categoryId) === String(id)
+      String(item.categoryId) === String(id),
   );
 
   /* ================= NOT FOUND ================= */
@@ -60,8 +59,7 @@ const ProductVariantDetails = () => {
   /* ================= SIMILAR PRODUCTS ================= */
   const similarProducts = productVariants.filter(
     (item) =>
-      String(item.categoryId) === String(product.id) &&
-      item.id !== variant.id
+      String(item.categoryId) === String(product.id) && item.id !== variant.id,
   );
 
   /* ================= TABS ================= */
@@ -91,50 +89,53 @@ const ProductVariantDetails = () => {
         backgroundImage="/images/breadcrumb.jpg"
       />
 
-      {/* ================= PRODUCT DETAILS ================= */}
-      <section className="px-5 py-12 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-5xl">
+      {/* content  */}
+      <section className="px-5 py-14 sm:px-8 lg:px-10 lg:py-20">
+        <div className="mx-auto max-w-6xl">
           <div
             className="
-              grid
-              gap-8
-              md:grid-cols-[300px_1fr]
-              md:items-start
-              lg:gap-12
-            "
+        grid
+        gap-10
+        md:grid-cols-[420px_1fr]
+        md:items-center
+        lg:grid-cols-[500px_1fr]
+        lg:gap-16
+      "
           >
             {/* ================= PRODUCT IMAGE ================= */}
             <div
               className="
-                overflow-hidden
-                rounded-tl-[45px]
-                rounded-br-[45px]
-                border
-                border-[#f2a318]
-                bg-white
-                p-2.5
-                shadow-[0_5px_20px_rgba(0,0,0,0.06)]
-              "
+          w-full
+          overflow-hidden
+          rounded-xl
+          border-2
+          border-[#f2a318]
+          p-3
+          shadow-[0_6px_25px_rgba(0,0,0,0.08)]
+        "
             >
               <div
                 className="
-                  overflow-hidden
-                  rounded-tr-[35px]
-                  rounded-bl-[35px]
-                "
+            overflow-hidden
+            rounded-tr-[45px]
+            rounded-bl-[45px]
+            bg-gray-100
+          "
               >
                 <img
                   src={variant.image}
                   alt={variant.name}
                   loading="lazy"
                   className="
-                    h-[260px]
-                    w-full
-                    object-cover
-                    transition-transform
-                    duration-500
-                    hover:scale-105
-                  "
+              h-[330px]
+              w-full
+              object-cover
+              transition-transform
+              duration-500
+              hover:scale-105
+              sm:h-[380px]
+              lg:h-[420px]
+            "
                 />
               </div>
             </div>
@@ -144,19 +145,19 @@ const ProductVariantDetails = () => {
               {/* Category */}
               <span
                 className="
-                  inline-flex
-                  w-fit
-                  rounded-tl-[20px]
-                  rounded-br-[20px]
-                  bg-[#fbe4b8]
-                  px-5
-                  py-2
-                  text-xs
-                  font-semibold
-                  uppercase
-                  tracking-wider
-                  text-[#173f40]
-                "
+            inline-flex
+            w-fit
+            rounded-tl-[22px]
+            rounded-br-[22px]
+            bg-[#fbe4b8]
+            px-6
+            py-2.5
+            text-sm
+            font-semibold
+            uppercase
+            tracking-wider
+            text-[#173f40]
+          "
               >
                 {product.name}
               </span>
@@ -164,80 +165,65 @@ const ProductVariantDetails = () => {
               {/* Product Name */}
               <h1
                 className="
-                  mt-4
-                  text-3xl
-                  font-bold
-                  leading-tight
-                  text-[#075b5b]
-                  sm:text-4xl
-                "
+            mt-5
+            text-3xl
+            font-bold
+            leading-tight
+            text-[#075b5b]
+            sm:text-4xl
+            lg:text-5xl
+          "
               >
                 {variant.name}
               </h1>
 
-              {/* Short Description */}
-              <p
-                className="
-                  mt-5
-                  max-w-2xl
-                  text-sm
-                  leading-7
-                  text-gray-600
-                "
-              >
-                {variant.description}
-              </p>
-
-              {/* Product Tags */}
-              <div className="mt-6 flex flex-wrap gap-3">
+              {/* Product Type */}
+              <div className="mt-6">
                 <span
                   className="
-                    rounded-full
-                    bg-[#fbe4b8]
-                    px-4
-                    py-2
-                    text-xs
-                    font-semibold
-                    text-[#075b5b]
-                  "
+              inline-flex
+              max-w-full
+              rounded-tr-[30px]
+              rounded-bl-[30px]
+              bg-[#f2a318]
+              px-7
+              py-3.5
+              text-base
+              font-semibold
+              leading-relaxed
+              text-black
+              sm:text-lg
+            "
                 >
-                  Premium Quality
+                  {variant.qualityStandards.join(" | ")}
                 </span>
+              </div>
 
-                <span
-                  className="
-                    rounded-full
-                    bg-[#fbe4b8]
-                    px-4
-                    py-2
-                    text-xs
-                    font-semibold
-                    text-[#075b5b]
-                  "
-                >
-                  {product.origin || "Indian Origin"}
-                </span>
+              {/* Rating and Reviews */}
+              <div className="mt-6 flex flex-wrap items-center gap-3">
+                <div className="flex items-center gap-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                      key={star}
+                      className={`h-5 w-5 ${
+                        star <= Math.round(variant.rating)
+                          ? "fill-[#f2a318] text-[#f2a318]"
+                          : "fill-gray-200 text-gray-200"
+                      }`}
+                    />
+                  ))}
+                </div>
 
-                <span
-                  className="
-                    rounded-full
-                    bg-[#fbe4b8]
-                    px-4
-                    py-2
-                    text-xs
-                    font-semibold
-                    text-[#075b5b]
-                  "
-                >
-                  Export Quality
+                <span className="text-sm text-gray-500 sm:text-base">
+                  {variant.rating.toFixed(1)} from {variant.reviews} Reviews
                 </span>
               </div>
 
               {/* Contact Button */}
-              <div className="mt-7">
+              <div className="mt-8">
                 <Button
                   href="https://wa.me/918448028999"
-                  className="min-h-[42px] px-7 py-2.5 text-xs"
+                  className="min-h-[52px] min-w-[190px] px-8 py-3 text-sm"
                 >
                   Contact Us
                 </Button>
@@ -461,8 +447,6 @@ const ProductVariantDetails = () => {
               >
                 Similar Products
               </h2>
-
-              <div className="mt-2 h-1 w-12 rounded-full bg-[#f2a318]" />
             </div>
 
             {/* Product Grid */}
@@ -484,9 +468,7 @@ const ProductVariantDetails = () => {
                   description={item.description}
                   image={item.image}
                   linkTo={`/products/${product.id}/${item.id}`}
-                  position={
-                    index % 2 === 0 ? "left" : "right"
-                  }
+                  position={index % 2 === 0 ? "left" : "right"}
                 />
               ))}
             </div>

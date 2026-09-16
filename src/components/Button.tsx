@@ -27,10 +27,10 @@ const Button = ({
     justify-center
     gap-3
     overflow-hidden
-    rounded-tl-[6px]
-    rounded-tr-[48px]
-    rounded-br-[6px]
-    rounded-bl-[48px]
+    rounded-tl-none
+    rounded-tr-[50px]
+    rounded-br-none
+    rounded-bl-[50px]
     bg-[#f2a318]
     px-9
     py-4
@@ -44,10 +44,10 @@ const Button = ({
     ease-in-out
 
     hover:-translate-y-1
-    hover:rounded-tl-[48px]
-    hover:rounded-tr-[6px]
-    hover:rounded-br-[48px]
-    hover:rounded-bl-[6px]
+    hover:rounded-tl-[50px]
+    hover:rounded-tr-none
+    hover:rounded-br-[50px]
+    hover:rounded-bl-none
     hover:bg-[#c77c00]
     hover:!text-black
     hover:shadow-[0_12px_28px_rgba(7,91,91,0.25)]

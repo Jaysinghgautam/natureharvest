@@ -248,18 +248,8 @@ const Breadcrumb = ({
           {/* Golden Light */}
           <div className="absolute -bottom-[20%] right-[3%] h-[300px] w-[300px] rounded-full bg-[#FFB800]/40 blur-[75px]" />
 
-          {/* Sparkle */}
-          <svg
-            className="absolute bottom-[20%] right-[8%] h-7 w-7 text-white/70 sm:right-[10%]"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path d="M12 0L13.5 10.5L24 12L13.5 13.5L12 24L10.5 13.5L0 12L10.5 10.5L12 0Z" />
-          </svg>
-
           {/* Wheat */}
-          <Wheat />
+          {/* <Wheat /> */}
 
           {/* Content */}
           <div className="relative z-20 flex h-full items-center px-10 sm:px-20">
