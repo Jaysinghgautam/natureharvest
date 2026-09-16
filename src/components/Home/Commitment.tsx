@@ -39,12 +39,10 @@ const Commitment = () => {
           />
 
           {/* Green Screen */}
-          <div className="absolute inset-0 bg-[#075b5b]/75" />
+          <div className="absolute inset-0 bg-[#065252]/96" />
 
           {/* Content */}
           <div className="relative z-10 flex h-full max-w-[850px] flex-col justify-center px-7 py-14 sm:px-12 sm:py-16 lg:px-20">
-
-            <span className="mb-5 h-1 w-16 rounded-full bg-[#f2a318]" />
 
             <h2 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-[58px]">
               Our Commitment
@@ -61,7 +59,7 @@ const Commitment = () => {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:gap-4">
               <Button
                 to="/about/brochures"
-                className="w-full min-w-0 !text-[#073f41] sm:w-auto sm:min-w-[220px]"
+                className="w-full min-w-0  sm:w-auto sm:min-w-[220px]"
               >
                 Download Brochure
               </Button>
@@ -72,7 +70,7 @@ const Commitment = () => {
                   w-full
                   min-w-0
                   border-2
-                  border-[#f2a318]
+                  border-[#ec8a13]
                   bg-transparent
                   !text-white
                   hover:!bg-[#f2a318]
@@ -130,13 +128,8 @@ const Commitment = () => {
           />
 
           {/* Green Screen */}
-          <div className="absolute inset-0 bg-[#075b5b]/55 transition-opacity duration-500 group-hover:bg-[#075b5b]/45" />
-
-          {/* Gold Border */}
-          <div className="absolute inset-5 rounded-tl-[75px] rounded-br-[55px] border border-[#f2a318]/50" />
-
- 
-        </motion.div>
+          <div className="absolute inset-0 bg-[#075b5b]/95 transition-opacity duration-500 group-hover:bg-[#075b5b]/96" />
+   </motion.div>
 
       </div>
     </section>

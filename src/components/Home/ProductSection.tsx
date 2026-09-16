@@ -1,3 +1,4 @@
+ 
 import { motion } from "framer-motion";
 
 import SectionTitle from "../SectionTitle";
@@ -19,7 +20,7 @@ const products: Product[] = [
     number: "01.",
     name: "Rice",
     description:
-      "Premium basmati rice with long grains, rich aroma, and perfect fluffiness. Ideal for luxurious dishes.",
+      "Premium basmati rice with long grains, rich aroma, and perfect fluffiness. Ideal for luxurious dishes like biryani and pilafs.",
     image: "https://natureharvest.co.in/home/rice.png",
     dark: true,
     position: "left",
@@ -29,7 +30,7 @@ const products: Product[] = [
     number: "02.",
     name: "Pulses",
     description:
-      "High-quality pulses and lentils, including lentils, chickpeas, beans, and more for nutritious meals.",
+      "High-quality pulses and lentils, including lentils, chickpeas, and beans, perfect for nutritious and hearty meals.",
     image: "https://natureharvest.co.in/home/moong-dal.png",
     position: "right",
   },
@@ -38,7 +39,7 @@ const products: Product[] = [
     number: "03.",
     name: "Spices",
     description:
-      "A wide range of aromatic spices, including cumin, turmeric, and cardamom, providing authentic flavor.",
+      "A wide range of aromatic spices, including cumin, turmeric, and cardamom, providing authentic flavor to your dishes.",
     image: "https://natureharvest.co.in/home/cardamom-green.png",
     position: "left",
   },
@@ -88,9 +89,10 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
       viewport={{ once: true, amount: 0.2 }}
       className={`
         group relative flex
-        h-[185px]
+        h-[250px] sm:h-[275px] lg:h-[290px]
         w-full
         overflow-hidden
+        
         ${
           isDark
             ? "bg-[#075b5b] text-white"
@@ -98,8 +100,8 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
         }
         ${
           isLeft
-            ? "rounded-bl-[75px] rounded-tr-[75px]"
-            : "rounded-br-[75px] rounded-tl-[75px]"
+            ? "rounded-bl-[80px] rounded-tr-[80px]"
+            : "rounded-br-[80px] rounded-tl-[80px]"
         }
       `}
     >
@@ -110,30 +112,30 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
           flex h-full flex-col justify-center
           ${
             isLeft
-              ? "w-[57%] pl-7 pr-3 sm:pl-8"
-              : "ml-auto w-[57%] pl-3 pr-7 sm:pr-8"
+              ? "w-[58%] pl-8 pr-3 sm:pl-10"
+              : "ml-auto w-[58%] pl-3 pr-8 sm:pr-10"
           }
         `}
       >
-        <span className="text-base font-bold leading-none">
+        <span className="text-[22px] font-bold leading-none sm:text-[26px]">
           {product.number}
         </span>
 
-        <h3 className="mt-2 text-2xl font-semibold leading-none sm:text-[25px]">
+        <h3 className="mt-2 text-[28px] font-normal leading-none sm:text-[34px]">
           {product.name}
         </h3>
 
         <p
           className={`
-            mt-3
-            max-w-[205px]
-            text-[10px]
-            leading-[1.45]
-            sm:text-[11px]
+            mt-4
+            max-w-[230px]
+            text-[13px]
+            leading-[1.55]
+            sm:text-[14px]
             ${
               isDark
                 ? "text-white/90"
-                : "text-black/80"
+                : "text-black/85"
             }
           `}
         >
@@ -145,26 +147,23 @@ const ProductCard = ({ product, index }: ProductCardProps) => {
       <div
         className={`
           absolute top-1/2
-          h-[145px] w-[145px]
+          h-[190px] w-[145px]
           -translate-y-1/2
           overflow-hidden
-          ${
-            isLeft
-              ? "right-6 rounded-tr-[60px] rounded-bl-[60px]"
-              : "left-6 rounded-tl-[60px] rounded-br-[60px]"
-          }
+          ${isLeft ? "right-6" : "left-6"}
         `}
       >
         <img
           src={product.image}
           alt={product.name}
+          style={{ borderRadius: "inherit" }}
           className="
             h-full
             w-full
             object-cover
             transition-transform
             duration-500
-            group-hover:scale-110
+           
           "
         />
       </div>
@@ -226,15 +225,15 @@ const ProductsSection = () => {
         {/* Products */}
         <div
           className="
-            relative mt-12
+            relative mt-14
             grid items-center
-            gap-6
-            lg:grid-cols-[1fr_210px_1fr]
-            lg:gap-7
+            gap-8
+            lg:grid-cols-[1fr_230px_1fr]
+            lg:gap-x-10 lg:gap-y-9
           "
         >
           {/* Left Cards */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8 lg:gap-9">
             {products
               .filter((product) => product.position === "left")
               .map((product, index) => (
@@ -250,7 +249,7 @@ const ProductsSection = () => {
           <motion.div
             initial={{
               opacity: 0,
-              scale: 0.85,
+              scale: 0.9,
               y: 35,
             }}
             whileInView={{
@@ -263,8 +262,8 @@ const ProductsSection = () => {
             className="
               relative z-10
               hidden
-              h-[400px]
-              items-end
+              h-[620px]
+              items-center
               justify-center
               lg:flex
             "
@@ -276,13 +275,12 @@ const ProductsSection = () => {
                 h-full
                 w-full
                 object-contain
-                object-bottom
               "
             />
           </motion.div>
 
           {/* Right Cards */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8 lg:gap-9">
             {products
               .filter((product) => product.position === "right")
               .map((product, index) => (
@@ -317,11 +315,11 @@ const ProductsSection = () => {
         </motion.div>
 
         {/* Button */}
-        <div className="mt-12 flex justify-center">
+        <div className="mt-14 flex justify-center">
           <Button
             to="/products"
             className="
-              min-w-[190px]
+              min-w-[260px]
               border
               border-[#f2a318]
               bg-white

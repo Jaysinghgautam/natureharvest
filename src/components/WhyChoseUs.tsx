@@ -212,7 +212,7 @@ const WhyChooseUs = () => {
               ))}
 
               {/* Trusted Badge */}
-              <div className="absolute right-5 top-5 w-[105px] rounded-xl bg-white p-3 shadow-xl sm:right-6 sm:top-6 sm:w-[125px]">
+              <div className="absolute right-5 top-5 w-[105px] rounded-xl  p-3  sm:right-6 sm:top-6 sm:w-[125px]">
                 <img
                   src="https://natureharvest.co.in/about-us/trusted.png"
                   alt="Trusted quality"
@@ -222,32 +222,7 @@ const WhyChooseUs = () => {
 
               {/* Bottom Decoration */}
               <div className="absolute bottom-[-10px] right-[-10px] opacity-80">
-                <svg
-                  width="140"
-                  height="140"
-                  viewBox="0 0 100 100"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M80 80 C 80 40, 40 20, 20 20"
-                    stroke="white"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M80 80 C 70 50, 40 40, 30 40"
-                    stroke="white"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M80 80 C 60 60, 40 60, 40 60"
-                    stroke="white"
-                    strokeWidth="3"
-                    strokeLinecap="round"
-                  />
-                </svg>
+                {/*   */}
               </div>
             </div>
           </motion.div>

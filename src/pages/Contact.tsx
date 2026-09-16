@@ -161,7 +161,7 @@ const Contacts = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
           >
-            <div className="rounded-tl-[44px] rounded-tr-[20px] rounded-bl-[20px] rounded-br-none bg-[#075657] p-7 shadow-xl sm:p-10 lg:p-12">
+            <div className="rounded-tl-[20px] rounded-tr-[20px] rounded-bl-[20px] rounded-br-[20px] bg-[#075657] p-7 shadow-xl sm:p-10 lg:p-12">
               <div className="mb-8">
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#f2a318]">
                   Get In Touch

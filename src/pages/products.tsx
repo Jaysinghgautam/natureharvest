@@ -220,7 +220,7 @@ const Products = () => {
                 <div className="absolute inset-0 bg-[#075b5b]/10 transition duration-500 group-hover:bg-[#075b5b]/20" />
 
                 {/* Decorative Icon */}
-                <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
+                {/* <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
                   <svg
                     width="25"
                     height="25"
@@ -233,7 +233,7 @@ const Products = () => {
                   >
                     <path d="M12 22C12 22 20 18 20 12C20 6 12 2 12 2C12 2 4 6 4 12C4 18 12 22 12 22Z" />
                   </svg>
-                </div>
+                </div> */}
               </div>
 
               {/* Content */}

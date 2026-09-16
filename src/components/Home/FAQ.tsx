@@ -124,7 +124,7 @@ const FAQ = () => {
               to="/contact"
               className="
                 min-w-[190px]
-                !bg-[#075b5b]
+                
                 !text-white
                 hover:!bg-[#f2a318]
                 hover:!text-[#075657]
