@@ -253,7 +253,7 @@ export const productVariants: ProductVariant[] = [
   /* ================= NON-BASMATI RICE ================= */
 
   {
-    id: "nonbasmati-sona-masuri",
+    id: "nonbasmati-sona-masuri1",
     categoryId: "2",
     name: "Sona Masoori Rice",
     description:
@@ -281,38 +281,35 @@ export const productVariants: ProductVariant[] = [
     reviews: 421,
   },
 
+   {
+  id: "IR64",
+  categoryId: "2",
+  name: "IR64 Rice",
+  description:
+    "A medium-grain rice variety known for its affordability, consistent quality, and high starch content.",
+  image: "/images/IR64.png",
+  keyFeatures: [
+    "Excellent cooking characteristics",
+    "Good grain integrity",
+    "Firm cooked texture",
+    "Suitable for bulk requirements",
+    "Long-lasting quality",
+    "Ideal for international markets",
+  ],
+  globalQualityStandards: [
+    "Export-quality product",
+    "Strict quality control",
+    "Hygienic processing",
+    "Carefully selected grains",
+    "Consistent quality",
+    "International buyer requirements",
+  ],
+  qualityStandards: ["Steam", "Raw"],
+  rating: 4.6,
+  reviews: 421,
+},
   {
-    id: "IR64 Rice",
-    categoryId: "2",
-    name: "IR64 Rice",
-    description:
-      "A Medium-Grain Rice Variety Known For Its Affordability, Consistent Quality, And High Starch Content.",
-
-    image: "/images/Sona Masoori Rice.png",
-
-    keyFeatures: [
-      "Excellent cooking characteristics",
-      "Good grain integrity",
-      "Firm cooked texture",
-      "Suitable for bulk requirements",
-      "Long-lasting quality",
-      "Ideal for international markets",
-    ],
-
-    globalQualityStandards: [
-      "Export-quality product",
-      "Strict quality control",
-      "Hygienic processing",
-      "Carefully selected grains",
-      "Consistent quality",
-      "International buyer requirements",
-    ],
-    qualityStandards: ["Steam", "Raw"],
-    rating: 4.6,
-    reviews: 421,
-  },
-  {
-    id: "nonbasmati-parboiled",
+    id: "nonbasmati",
     categoryId: "2",
     name: "PR 11 Rice",
     description:
@@ -343,7 +340,7 @@ export const productVariants: ProductVariant[] = [
   /* ================= SPICES ================= */
 
   {
-    id: "spices-turmeric",
+    id: "spices-cumin1",
     categoryId: "3",
     name: "Chili (Whole and Powdered)",
     description:
@@ -372,7 +369,7 @@ export const productVariants: ProductVariant[] = [
   },
 
   {
-    id: "spices-cumin",
+    id: "spices-cumin2",
     categoryId: "3",
     name: "Turmeric (Whole and Powdered)",
     description:
@@ -400,7 +397,7 @@ export const productVariants: ProductVariant[] = [
   },
 
   {
-    id: "spices-cumin",
+    id: "spices-cumin3",
     categoryId: "3",
     name: "Cumin Seeds",
     description:
@@ -427,7 +424,7 @@ export const productVariants: ProductVariant[] = [
     reviews: 582,
   },
   {
-    id: "spices-cumin",
+    id: "spices-cumin4",
     categoryId: "3",
     name: "Coriander Seeds",
     description:
@@ -453,7 +450,7 @@ export const productVariants: ProductVariant[] = [
     reviews: 582,
   },
   {
-    id: "spices-cumin",
+    id: "spices-cumin5",
     categoryId: "3",
     name: "Black Pepper",
     description:
@@ -507,31 +504,57 @@ export const productVariants: ProductVariant[] = [
     rating: 4.5,
     reviews: 421,
   },
-  
-    
-     // Pulses & Lentils
 
+  // Pulses & Lentils
 
-   {
-    id: "spices-cumin",
+  {
+    id: "pulse",
     categoryId: "4",
-    name: "Black Pepper",
+    name: "Toor Dal (Pigeon Pea)",
     description:
-      'Known as the "Queen of Spices," green cardamom is highly valued for its complex, sweet, and floral fragrance with hints of mint and lemon. It is one of the most expensive spices by weight but requires only a small amount to impart its intense flavor. Cardamom is incredibly versatile, featuring prominently in traditional Indian sweets, Scandinavian baking, Middle Eastern coffee, and savory curries. Our cardamom pods are hand-picked to ensure optimal ripeness and color retention.',
-    image: "/images/Cardamom (Green).png",
+      '"Toor Dal, also known as Pigeon Pea, is a nutrient-rich, protein-packed lentil that forms the backbone of South Asian, African, and Latin American cuisines. With its earthy, mildly sweet flavor and creamy texture, it is widely used in Indian dals, curries, and soups. It absorbs spices beautifully, making it a perfect base for richly flavored dishes. Toor Dal is a great source of plant-based protein, fiber, and essential vitamins, supporting digestive health, heart health, and muscle repair. Due to its easy digestibility, it is ideal for children and elderly individuals. It is also extensively used in processed food industries for manufacturing ready-to-eat meals, flour blends, and protein supplements."',
+    image: "/images/Toor Dal.png",
 
     keyFeatures: [
-      "Sweet, floral, and highly aromatic flavor",
-      "Premium green pods with full seeds",
-      "Essential for desserts, baking, and beverages",
-      "Natural breath freshener and digestive",
-      "Carefully hand-picked and graded by size",
-      "Available as whole pods or ground powder",
+      "Rich in plant-based protein and dietary fiber",
+      "Earthy, mildly sweet flavor",
+      "Cooks to a soft, creamy texture",
+      "Easily digestible",
+      "Essential for traditional Indian dishes like Sambar and Dal Tadka",
+      "Available unpolished for maximum nutritional value",
     ],
 
     globalQualityStandards: [
       "FSSAI Certified",
-      "Spices Board of India Registered",
+      "APEDA Registered",
+      "ISO 22000 Compliant",
+      "HACCP Certified",
+      "Phytosanitary Certified",
+    ],
+    qualityStandards: ["premium quality"],
+    rating: 4.5,
+    reviews: 432,
+  },
+  {
+    id: "Black Pepper",
+    categoryId: "4",
+    name: "Masoor Dal (Red Lentils)",
+    description:
+      '"Masoor Dal, or Red Lentils, are quick-cooking, soft-textured lentils prized for their slightly sweet and nutty flavor profile. Unlike many other legumes, they do not require pre-soaking and break down easily when cooked, making them perfect for thick soups, stews, and purees. Packed with iron, protein, and folate, Masoor Dal is an excellent choice for a healthy, balanced diet. It is widely consumed across the Middle East, India, and the Mediterranean."',
+    image: "/images/Masoor Dal.png",
+
+    keyFeatures: [
+      "Quick cooking, no pre-soaking required",
+      "Sweet, nutty flavor profile",
+      "Excellent source of iron and folate",
+      "Breaks down easily for smooth soups and purees",
+      "Low glycemic index",
+      "Highly versatile in global cuisines",
+    ],
+
+    globalQualityStandards: [
+      "FSSAI Certified",
+      "APEDA Registered",
       "ISO 22000 Compliant",
       "Phytosanitary Certified",
     ],
@@ -539,32 +562,232 @@ export const productVariants: ProductVariant[] = [
     rating: 4.5,
     reviews: 421,
   },
-   {
-    id: "spices-cumin",
+  {
+    id: "pulse",
     categoryId: "4",
-    name: "Black Pepper",
+    name: "Kabuli Chickpeas",
     description:
-      'Known as the "Queen of Spices," green cardamom is highly valued for its complex, sweet, and floral fragrance with hints of mint and lemon. It is one of the most expensive spices by weight but requires only a small amount to impart its intense flavor. Cardamom is incredibly versatile, featuring prominently in traditional Indian sweets, Scandinavian baking, Middle Eastern coffee, and savory curries. Our cardamom pods are hand-picked to ensure optimal ripeness and color retention.',
-    image: "/images/Cardamom (Green).png",
+      "Kabuli Chickpeas are large, light-colored legumes known for their thin skin, creamy interior, and buttery, nutty flavor. They are a staple in Mediterranean, Middle Eastern, and Indian cuisines, famously used to make hummus, falafel, and Chana Masala. Our Kabuli Chickpeas are carefully sorted by size to ensure uniformity and quality. They are an excellent source of vegan protein, complex carbohydrates, and fiber, keeping you full and energized for longer.",
+    image: "/images/Kabuli Chickpeas.png",
 
     keyFeatures: [
-      "Sweet, floral, and highly aromatic flavor",
-      "Premium green pods with full seeds",
-      "Essential for desserts, baking, and beverages",
-      "Natural breath freshener and digestive",
-      "Carefully hand-picked and graded by size",
-      "Available as whole pods or ground powder",
+      "Large, uniform size with a smooth skin",
+      "Creamy, buttery texture when cooked",
+      "High in protein, fiber, and complex carbs",
+      "Essential for hummus, falafel, and curries",
+      "Retains shape well in salads and stews",
+      "Machine sorted and cleaned for premium quality",
     ],
 
     globalQualityStandards: [
       "FSSAI Certified",
-      "Spices Board of India Registered",
+      "APEDA Registered",
       "ISO 22000 Compliant",
       "Phytosanitary Certified",
     ],
     qualityStandards: ["premium quality"],
     rating: 4.5,
-    reviews: 421,
+    reviews: 512,
+  },
+  {
+    id: "pulse",
+    categoryId: "4",
+    name: "Moong Dal (Green Lentils)",
+    description:
+      "Moong Dal, derived from the green mung bean, is one of the most popular and nutritious lentils in Asian cuisines. Known for its light, slightly sweet flavor and ease of digestion, it is a go-to ingredient for everyday cooking across India and Southeast Asia. Our premium Moong Dal is available in whole, split, and hulled forms. The hulled variety (yellow moong dal) cooks quickly and has a mild, creamy texture — ideal for khichdi, soups, and baby food. Whole green moong is perfect for sprouting and salads. Rich in protein, folate, and antioxidants, Moong Dal is one of the most health-friendly pulses available.",
+    image: "/images/moong dal.png",
+
+    keyFeatures: [
+      "Extremely light and easy to digest",
+      "Rich in plant protein, folate, and antioxidants",
+      "Available in whole, split, and hulled varieties",
+      "Mild, slightly sweet flavor profile",
+      "Cooks quickly without pre-soaking (hulled variety)",
+      "Ideal for everyday meals, soups, and baby food",
+    ],
+
+    globalQualityStandards: [
+      "FSSAI Certified",
+      "APEDA Registered",
+      "ISO 22000 Compliant",
+      "Phytosanitary Certified",
+    ],
+    qualityStandards: ["premium quality"],
+    rating: 4.2,
+    reviews: 378,
+  },
+
+  // millets
+
+  {
+    id: "millet",
+    categoryId: "5",
+    name: "Pearl Millet (Bajra)",
+    description:
+      "Bajra, or Pearl Millet, is an ancient supergrain, rich in iron, fiber, and antioxidants. This gluten-free grain is widely consumed in India, Africa, and the Middle East, forming the base for flatbreads, porridges, and traditional dishes. It has a slightly nutty, earthy flavor and offers numerous health benefits, including improved digestion, blood sugar control, and bone strength. Bajra is also used in baby food formulas, health supplements, and snack industries due to its high nutritional value.",
+    image: "/images/Pearl Millet.png",
+
+    keyFeatures: [
+      "100% Gluten-free supergrain",
+      "Exceptionally high in iron and dietary fiber",
+      "Low glycemic index for better blood sugar control",
+      "Nutty, earthy flavor profile",
+      "Ideal for flatbreads (roti), porridges, and baking",
+      "Drought-resistant and sustainably grown",
+    ],
+
+    globalQualityStandards: [
+      "FSSAI Certified",
+      "APEDA Registered",
+      "ISO 22000 Compliant",
+      "Phytosanitary Certified",
+    ],
+    qualityStandards: ["premium quality"],
+    rating: 4.2,
+    reviews: 378,
+  },
+  {
+    id: "millets",
+    categoryId: "5",
+    name: "Pearl Millet (Bajra)",
+    description:
+      "Sorghum, known locally as Jowar, is a highly nutritious, gluten-free cereal grain that has been a dietary staple in dryland regions for centuries. It is packed with protein, fiber, and complex carbohydrates, making it a fantastic wheat alternative for those with celiac disease or gluten sensitivity. Sorghum has a mild, sweet flavor and a versatile texture. It can be ground into flour for baking, popped like popcorn, or cooked whole like quinoa or rice.",
+    image: "/images/Sorghum.png",
+
+    keyFeatures: [
+      "Gluten-free wheat alternative",
+      "Rich in protein and antioxidants",
+      "Mild, slightly sweet flavor",
+      "Highly versatile — can be popped, boiled, or milled",
+      "Supports heart health and digestion",
+      "Sustainably cultivated with low water footprint",
+    ],
+
+    globalQualityStandards: [
+      "FSSAI Certified",
+      "APEDA Registered",
+      "ISO 22000 Compliant",
+      "Phytosanitary Certified",
+    ],
+    qualityStandards: ["premium quality"],
+    rating: 4.2,
+    reviews: 378,
+  },
+
+  // Dehydrated & Processed Items
+
+  {
+    id: "millet",
+    categoryId: "6",
+    name: "Dehydrated Onions (Flakes, Powder, Granules)",
+    description:
+      "Dehydrated onions are a highly convenient and flavorful substitute for fresh onions, designed for the food processing and culinary industries. By removing the moisture content while retaining the essential oils and flavor compounds, these dehydrated products offer an extended shelf life without compromising on taste. Available in flakes (kibbled), minced, chopped, granulated, and powder forms, they rehydrate quickly and are perfect for ready-to-eat meals, spice blends, sauces, soups, and marinades. They eliminate the hassle of peeling, chopping, and weeping, saving valuable prep time in commercial kitchens.",
+    image: "/images/Dehydrated Onion.png",
+
+    keyFeatures: [
+      "Retains the pungent flavor and aroma of fresh onions",
+      "Extended shelf life up to 12-24 months",
+      "Zero prep time required (no peeling or chopping)",
+      "Available in flakes, granules, minced, and powder forms",
+      "Rehydrates rapidly in liquids",
+      "Space-saving and cost-effective for commercial use",
+    ],
+
+    globalQualityStandards: [
+      "FSSAI Certified",
+      "APEDA Registered",
+      "ISO 22000 Compliant",
+      "HACCP Certified",
+      "Kosher & Halal Certified (Select Facilities)",
+    ],
+    qualityStandards: ["premium quality"],
+    rating: 4.3,
+    reviews: 512,
+  },
+
+  {
+    id: "millets",
+    categoryId: "6",
+    name: "Dehydrated Garlic (Flakes, Powder, Granules)",
+    description:
+      "Dehydrated garlic delivers the robust, sharp flavor of fresh garlic in a shelf-stable, easy-to-use format. Produced from high-quality garlic cloves that are carefully dried to preserve their intense aroma and natural health benefits, this product is a staple in food manufacturing worldwide. Whether you need garlic flakes for hearty stews, granulated garlic for dry rubs and seasoning blends, or fine garlic powder for smooth sauces and dressings, our dehydrated garlic ensures consistent flavor profiles across your recipes without the mess of fresh garlic preparation.",
+    image: "/images/Dehydrated Garlic.png",
+
+    keyFeatures: [
+      "Concentrated, intense garlic flavor and aroma",
+      "Significantly longer shelf life than fresh garlic",
+      "Consistent flavor profile year-round",
+      "Available in flakes, granules, minced, and fine powder",
+      "Reduces labor costs and prep time",
+      "Maintains nutritional benefits like allicin",
+    ],
+
+    globalQualityStandards: [
+      "FSSAI Certified",
+      "APEDA Registered",
+      "ISO 22000 Compliant",
+      "Phytosanitary Certified",
+    ],
+    qualityStandards: ["premium quality"],
+    rating: 4.2,
+    reviews: 378,
+  },
+
+  // Oil Seeds
+
+  {
+    id: "millets",
+    categoryId: "7",
+    name: "Sesame Seeds (White and Hulled)",
+    description:
+      "Sesame seeds are tiny, oil-rich seeds that have been cultivated for thousands of years. We supply premium natural white, hulled, and black sesame seeds that are prized for their delicate, nutty flavor and satisfying crunch. Hulled sesame seeds have their outer coat removed, resulting in a uniform white color and a softer, sweeter flavor, making them ideal for baking, confectionery (like tahini and halva), and garnishing. Natural and black sesame seeds retain their hulls, offering a slightly more robust flavor and higher calcium content.",
+    image: "/images/Sesame Seeds.png",
+
+    keyFeatures: [
+      "High oil content (approx. 50%)",
+      "Rich source of plant protein, calcium, and healthy fats",
+      "Available in natural white, hulled, and black varieties",
+      "Delicate, sweet, and nutty flavor profile",
+      "Perfect for baking, tahini paste, and Asian cooking",
+      "Machine cleaned and optically sorted for 99.9% purity",
+    ],
+
+    globalQualityStandards: [
+      "FSSAI Certified",
+      "APEDA Registered",
+      "ISO 22000 Compliant",
+      "Phytosanitary Certified",
+    ],
+    qualityStandards: ["premium quality"],
+    rating: 4.2,
+    reviews: 378,
+  },
+  {
+    id: "millet",
+    categoryId: "7",
+    name: "Sesame Seeds (White and Hulled)",
+    description:
+      "Sesame seeds are tiny, oil-rich seeds that have been cultivated for thousands of years. We supply premium natural white, hulled, and black sesame seeds that are prized for their delicate, nutty flavor and satisfying crunch. Hulled sesame seeds have their outer coat removed, resulting in a uniform white color and a softer, sweeter flavor, making them ideal for baking, confectionery (like tahini and halva), and garnishing. Natural and black sesame seeds retain their hulls, offering a slightly more robust flavor and higher calcium content.",
+    image: "/images/Groundnuts.png",
+
+    keyFeatures: [
+      "High oil content (approx. 50%)",
+      "Rich source of plant protein, calcium, and healthy fats",
+      "Available in natural white, hulled, and black varieties",
+      "Delicate, sweet, and nutty flavor profile",
+      "Perfect for baking, tahini paste, and Asian cooking",
+      "Machine cleaned and optically sorted for 99.9% purity",
+    ],
+
+    globalQualityStandards: [
+      "FSSAI Certified",
+      "APEDA Registered",
+      "ISO 22000 Compliant",
+      "Phytosanitary Certified",
+    ],
+    qualityStandards: ["premium quality"],
+    rating: 4.3,
+    reviews: 310,
   },
 ];
 
