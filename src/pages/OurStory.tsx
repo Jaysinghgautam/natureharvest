@@ -1,4 +1,4 @@
- import { useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import Breadcrumb from "../components/Breadcrub";
@@ -61,22 +61,18 @@ const accordionItems: AccordionItem[] = [
 const whoWeAreFeatures: WhoWeAreFeature[] = [
   {
     title: "India: A Global Agri-Export Leader",
-    desc:
-      "India's diverse agriculture makes it a key player in global food supply. We source from certified producers to deliver premium grains, spices, and pulses worldwide.",
-    svgPath:
-      "M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z",
+    desc: "India's diverse agriculture makes it a key player in global food supply. We source from certified producers to deliver premium grains, spices, and pulses worldwide.",
+    svgPath: "M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z",
   },
   {
     title: "Bridging Markets, Connecting Communities",
-    desc:
-      "We link farmers, manufacturers, and global buyers through a seamless, transparent export process that meets international standards.",
+    desc: "We link farmers, manufacturers, and global buyers through a seamless, transparent export process that meets international standards.",
     svgPath:
       "M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418",
   },
   {
     title: "Committed to Global Food Security",
-    desc:
-      "We support stable food supply chains through ethical sourcing and efficient logistics, ensuring essential commodities reach where they are needed most.",
+    desc: "We support stable food supply chains through ethical sourcing and efficient logistics, ensuring essential commodities reach where they are needed most.",
     svgPath:
       "M12 2.25c-1.353 2.546-3.882 5.06-5.88 7.375-1.921 2.227-3.12 4.67-3.12 7.125 0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.455-1.199-4.898-3.12-7.125-1.998-2.315-4.527-4.829-5.88-7.375z",
   },
@@ -148,30 +144,24 @@ const OurStory = () => {
   return (
     <>
       {/* Breadcrumb */}
-      <Breadcrumb
-        title="Our Story"
-        backgroundImage="/images/breadcrumb.jpg"
-      />
+      <Breadcrumb title="Our Story" backgroundImage="/images/breadcrumb.jpg" />
 
       {/* WHO WE ARE */}
       <section className="overflow-hidden bg-white px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Images */}
-          <motion.div
-            {...slideLeft}
-            className="flex flex-col gap-5 sm:gap-6"
-          >
-            <div className="group h-[200px] w-full overflow-hidden rounded-tr-[60px] rounded-bl-[60px] shadow-md sm:h-[280px]">
+          <motion.div {...slideLeft} className="flex flex-col gap-5 sm:gap-6">
+            <div className="group h-[330px] flex w-[550px] overflow-hidden rounded-tr-[60px] rounded-bl-[60px] shadow-md sm:h-[280px]">
               <img
-                src="https://natureharvest.co.in/about-us/1.jpg"
+                src="/1.jpg"
                 alt="Hands holding soil"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </div>
 
-            <div className="group h-[200px] w-full overflow-hidden rounded-tl-[80px] rounded-tr-none rounded-bl-none rounded-br-[80px] shadow-md sm:h-[280px]">
+            <div className="group h-[330px] w-[550px] flex justify-center overflow-hidden rounded-tl-[80px] rounded-tr-none rounded-bl-none rounded-br-[80px] shadow-md sm:h-[280px]">
               <img
-                src="https://natureharvest.co.in/about-us/2.jpg"
+                src="/2.jpg"
                 alt="Solar panels in a field"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -263,9 +253,7 @@ const OurStory = () => {
                   >
                     <button
                       type="button"
-                      onClick={() =>
-                        setOpenIndex(isOpen ? -1 : index)
-                      }
+                      onClick={() => setOpenIndex(isOpen ? -1 : index)}
                       className="flex w-full items-center justify-between px-5 py-4 text-left text-sm font-semibold text-[#075657] sm:px-6 sm:text-base"
                     >
                       <span>{item.title}</span>
@@ -284,16 +272,11 @@ const OurStory = () => {
                           transition={{ duration: 0.3 }}
                         >
                           <div className="px-5 pb-5 text-xs leading-relaxed text-gray-700 sm:px-6 sm:text-sm">
-                            {item.content
-                              .split("\n\n")
-                              .map((paragraph, i) => (
-                                <p
-                                  key={i}
-                                  className={i > 0 ? "mt-3" : ""}
-                                >
-                                  {paragraph}
-                                </p>
-                              ))}
+                            {item.content.split("\n\n").map((paragraph, i) => (
+                              <p key={i} className={i > 0 ? "mt-3" : ""}>
+                                {paragraph}
+                              </p>
+                            ))}
                           </div>
                         </motion.div>
                       )}
@@ -304,34 +287,20 @@ const OurStory = () => {
             </div>
 
             {/* Identity Image */}
-            <div className="group relative h-[450px] w-full">
-              <div className="absolute inset-0 overflow-hidden rounded-tl-2xl rounded-tr-[80px] rounded-bl-[80px] rounded-br-2xl shadow-xl">
+            <div className="group relative h-full w-full">
+              <div className="absolute inset-0 overflow-hidden rounded-tl-none rounded-tr-[80px] rounded-bl-[80px] rounded-br-none shadow-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80"
+                  src="/our-identity.jpg"
                   alt="Hands holding fresh harvest"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
-
-              <div className="absolute right-0 top-0 z-10 rounded-bl-[40px] bg-white px-5 py-3 shadow-md sm:px-6 sm:py-4">
-                <div className="flex flex-col items-center justify-center gap-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="h-8 w-8 text-green-600 sm:h-10 sm:w-10"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-
-                  <span className="text-xs font-bold text-gray-800 sm:text-sm">
-                    Trusted
-                  </span>
-                </div>
+              <div className="absolute right-5 top-5 w-[135px] rounded-xl p-3 sm:right-6 sm:top-6 sm:w-[160px">
+                <img
+                  src="/trusted.png"
+                  alt="Trusted quality"
+                  className="w-full object-contain"
+                />
               </div>
             </div>
           </div>
@@ -345,7 +314,7 @@ const OurStory = () => {
           <motion.div {...slideLeft} className="group relative">
             <div className="overflow-hidden rounded-tr-[100px] rounded-bl-[100px] shadow-[0_20px_40px_rgba(0,0,0,0.1)]">
               <img
-                src="https://natureharvest.co.in/about-us/director.jpg"
+                src="/director.jpg"
                 alt="Founder and CEO"
                 className="h-[380px] w-full object-cover transition-transform duration-700 group-hover:scale-110 sm:h-[480px]"
               />
@@ -369,8 +338,8 @@ const OurStory = () => {
             <p className="mt-6 text-base leading-relaxed text-[#075657] sm:mt-7 sm:text-lg">
               Achinta Banerjie, Founder & CEO of Nature Harvest, has held
               leadership positions at renowned global corporations like
-              Colgate-Palmolive, Unilever, Amway, and Tupperware Brands,
-              driving global growth and market expansion.
+              Colgate-Palmolive, Unilever, Amway, and Tupperware Brands, driving
+              global growth and market expansion.
             </p>
 
             <p className="mt-4 text-base leading-relaxed text-[#075657] sm:mt-5 sm:text-lg">
@@ -411,17 +380,14 @@ const OurStory = () => {
           >
             <div className="h-full w-full overflow-hidden rounded-bl-[80px] rounded-tr-[80px] shadow-md sm:rounded-bl-[100px] sm:rounded-tr-[100px]">
               <img
-                src="https://natureharvest.co.in/about-us/whyus.png"
+                src="/whyus.png"
                 alt="Woman harvesting grains"
                 className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
             </div>
           </motion.div>
 
-          <motion.div
-            {...slideRight}
-            className="flex flex-col gap-8 sm:gap-10"
-          >
+          <motion.div {...slideRight} className="flex flex-col gap-8 sm:gap-10">
             <div>
               <span className="inline-block rounded-full bg-[#f5e8cd] px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-[#075657] sm:text-xs">
                 Our Mission
@@ -432,8 +398,8 @@ const OurStory = () => {
                 delivering naturally sourced, high-quality spices, rice, and
                 grains to global markets. Our mission is centered on purity,
                 sustainability, and ethical sourcing, ensuring that every
-                product we offer is harvested with the utmost care and
-                attention to quality.
+                product we offer is harvested with the utmost care and attention
+                to quality.
               </p>
             </div>
 
@@ -492,20 +458,14 @@ type WhyCardProps = {
   icon: string;
 };
 
-const WhyCard = ({
-  title,
-  description,
-  icon,
-}: WhyCardProps) => {
+const WhyCard = ({ title, description, icon }: WhyCardProps) => {
   return (
     <motion.div
       variants={fadeUpItem}
       className="group rounded-tl-[40px] rounded-br-[40px] bg-[#fff3d7] p-6 transition duration-300 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(0,0,0,0.08)] sm:rounded-tl-[50px] sm:rounded-br-[50px] sm:p-7"
     >
       <div className="flex items-center justify-between">
-        <span className="text-sm font-bold text-[#f2a318]">
-          {icon}
-        </span>
+        <span className="text-sm font-bold text-[#f2a318]">{icon}</span>
 
         <span className="text-2xl text-[#00595d] transition-transform duration-300 group-hover:rotate-45">
           +

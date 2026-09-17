@@ -1,4 +1,4 @@
- import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Button from "../Button";
 
 const wheatLeaves = [
@@ -14,8 +14,7 @@ const wheatLeaves = [
 const Commitment = () => {
   return (
     <section className="overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto grid max-w-[1500px] gap-6 px-5 sm:px-8 lg:grid-cols-[2fr_1fr] lg:gap-8 lg:px-0">
-
+      <div className="mx-auto w-full h-auto grid gap-6 px-5 sm:px-8 lg:grid-cols-[2fr_1fr] lg:gap-8 lg:px-0">
         {/* LEFT — Green Screen Image */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -23,14 +22,16 @@ const Commitment = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="
-            relative min-h-[500px]
-            overflow-hidden
-            rounded-tr-[100px]
-            rounded-bl-[70px]
-            bg-[#075b5b]
-            sm:min-h-[560px]
-            lg:min-h-[620px]
-          "
+ 
+    relative
+    min-h-[450px]
+    overflow-hidden
+    rounded-tr-[100px]
+    rounded-bl-[70px]
+    bg-[#075b5b]
+    sm:min-h-[510px]
+    lg:min-h-[570px]
+  "
         >
           <img
             src="/images/commitment.png"
@@ -43,7 +44,6 @@ const Commitment = () => {
 
           {/* Content */}
           <div className="relative z-10 flex h-full max-w-[850px] flex-col justify-center px-7 py-14 sm:px-12 sm:py-16 lg:px-20">
-
             <h2 className="text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-[58px]">
               Our Commitment
             </h2>
@@ -85,7 +85,7 @@ const Commitment = () => {
           </div>
 
           {/* Wheat Decoration */}
-          <div className="absolute bottom-[-10px] left-6 z-10 sm:left-10">
+          {/* <div className="absolute bottom-[-10px] left-6 z-10 sm:left-10">
             <div className="relative h-36 w-28 rotate-[-25deg]">
               <span className="absolute bottom-0 left-1/2 h-32 w-[3px] -translate-x-1/2 rotate-[-15deg] rounded-full bg-[#f2a318]" />
 
@@ -101,7 +101,7 @@ const Commitment = () => {
                 />
               ))}
             </div>
-          </div>
+          </div> */}
         </motion.div>
 
         {/* RIGHT — Green Screen Image */}
@@ -129,8 +129,7 @@ const Commitment = () => {
 
           {/* Green Screen */}
           <div className="absolute inset-0 bg-[#075b5b]/95 transition-opacity duration-500 group-hover:bg-[#075b5b]/96" />
-   </motion.div>
-
+        </motion.div>
       </div>
     </section>
   );

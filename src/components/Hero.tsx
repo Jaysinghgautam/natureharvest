@@ -71,9 +71,7 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-            <div className="absolute -left-6 -top-6 h-24 w-24 rounded-full border border-[#f2a318]/30" />
-
-            <div className="relative h-[380px] w-full overflow-hidden rounded-tr-[95px] rounded-bl-[95px] bg-black shadow-[0_25px_60px_rgba(0,70,70,0.15)] sm:h-[450px] lg:h-[500px] xl:h-[540px]">
+       <div className="relative h-[380px] w-full overflow-hidden rounded-tr-[95px] rounded-bl-[95px] bg-black shadow-[0_25px_60px_rgba(0,70,70,0.15)] sm:h-[450px] lg:h-[500px] xl:h-[540px]">
               <video
                 autoPlay
                 muted
@@ -97,7 +95,7 @@ const Hero = () => {
           </motion.div>
 
           {/* Content */}
-          <motion.div
+           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -130,7 +128,7 @@ const Hero = () => {
             </div>
 
             {/* Buttons */}
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8  ml-8 flex flex-wrap gap-4">
               <Button to="/products" className=" hover:!text-[#ffffff]">
                 Our Products
               </Button>
@@ -144,7 +142,7 @@ const Hero = () => {
             </div>
 
             {/* Stats */}
-            <div className="mt-8 flex flex-wrap gap-6 border-t border-[#00595d]/10 pt-6">
+            <div className="mt-8 ml-8 items-center flex flex-wrap gap-6 border-t border-[#00595d]/10 pt-6">
               {stats.map(([value, label], index) => (
                 <div key={label} className="flex items-center gap-6">
                   {index > 0 && <span className="h-10 w-px bg-[#00595d]/15" />}
@@ -159,7 +157,7 @@ const Hero = () => {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </motion.div> 
         </div>
       </div>
 

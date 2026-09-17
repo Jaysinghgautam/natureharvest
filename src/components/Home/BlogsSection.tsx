@@ -8,7 +8,7 @@ const blogs = [
     title: "The Growing Demand for Millets in the Global Market",
     description:
       "Explore the growing global demand for millets and their importance in healthy and sustainable food systems.",
-    image: "https://natureharvest.co.in/blog-millets.png",
+    image: "/blog-millets.png",
     date: "03 FEB",
     category: "Agriculture",
   },
@@ -17,7 +17,7 @@ const blogs = [
     title: "How to Choose the Right Rice for Your Needs",
     description:
       "Learn how to choose the right rice based on quality, texture, aroma, cooking style, and your specific requirements.",
-    image: "https://natureharvest.co.in/blog-rice.png",
+    image: "/blog-rice.png",
     date: "23 JAN",
     category: "Rice",
   },
@@ -26,7 +26,7 @@ const blogs = [
     title: "The Benefits of Sourcing Sustainable Agricultural Products",
     description:
       "Discover why sustainable sourcing matters and how responsible agricultural practices create long-term value.",
-    image: "https://natureharvest.co.in/blog-sustainable.png",
+    image: "/blog-sustainable.png",
     date: "23 JAN",
     category: "Sustainability",
   },

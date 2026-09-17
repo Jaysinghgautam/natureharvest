@@ -35,11 +35,11 @@ const faqs = [
 const faqImages = [
   {
     image:
-      "https://natureharvest.co.in/product/%E0%A4%96%E0%A5%82%E0%A4%AC%E0%A4%B8%E0%A5%82%E0%A4%B0%E0%A4%A4-%E0%A4%B9%E0%A5%88%E0%A4%82-%E0%A4%A8%E0%A5%9B%E0%A4%BE%E0%A4%B0-%E0%A4%97%E0%A4%BE%E0%A4%82%E0%A4%B5-%E0%A4%AE%E0%A5%87%E0%A4%82.jpg",
+      "/faq2.jpg",
     alt: "Farmers working in rice field",
   },
   {
-    image: "https://natureharvest.co.in/product/Red%20Chile%20Processing.jpg",
+    image: "faq1.jpg",
     alt: "Agricultural farming",
   },
 ];

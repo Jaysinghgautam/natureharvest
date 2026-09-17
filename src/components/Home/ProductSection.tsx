@@ -21,7 +21,7 @@ const products: Product[] = [
     name: "Rice",
     description:
       "Premium basmati rice with long grains, rich aroma, and perfect fluffiness. Ideal for luxurious dishes like biryani and pilafs.",
-    image: "https://natureharvest.co.in/home/rice.png",
+    image: "/rice.png",
     dark: true,
     position: "left",
   },
@@ -31,7 +31,7 @@ const products: Product[] = [
     name: "Pulses",
     description:
       "High-quality pulses and lentils, including lentils, chickpeas, and beans, perfect for nutritious and hearty meals.",
-    image: "https://natureharvest.co.in/home/moong-dal.png",
+    image: "/moong-dal.png",
     position: "right",
   },
   {
@@ -40,7 +40,7 @@ const products: Product[] = [
     name: "Spices",
     description:
       "A wide range of aromatic spices, including cumin, turmeric, and cardamom, providing authentic flavor to your dishes.",
-    image: "https://natureharvest.co.in/home/cardamom-green.png",
+    image: "/cardamom-green.png",
     position: "left",
   },
   {
@@ -49,7 +49,7 @@ const products: Product[] = [
     name: "Millets",
     description:
       "Healthy and nutritious millets and coarse grains, perfect for weight management and wholesome meals.",
-    image: "https://natureharvest.co.in/home/millets.png",
+    image: "/millets.png",
     dark: true,
     position: "right",
   },

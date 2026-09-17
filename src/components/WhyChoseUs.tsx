@@ -57,7 +57,6 @@ const WhyChooseUs = () => {
   return (
     <section className="overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-
         {/* Header */}
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
           <motion.div
@@ -82,14 +81,13 @@ const WhyChooseUs = () => {
           >
             Experience unmatched quality, transparency, and reliability with
             Nature Harvest. We prioritize your needs, ensure global compliance,
-            simplify trade processes, and deliver premium agricultural
-            products on time, every time.
+            simplify trade processes, and deliver premium agricultural products
+            on time, every time.
           </motion.p>
         </div>
 
         {/* Main Content */}
         <div className="mt-10 grid items-start gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-0">
-
           {/* Left */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -130,9 +128,7 @@ const WhyChooseUs = () => {
                   <div key={item.title}>
                     <button
                       type="button"
-                      onClick={() =>
-                        setActiveIndex(isActive ? -1 : index)
-                      }
+                      onClick={() => setActiveIndex(isActive ? -1 : index)}
                       className={`
                         flex w-full items-center justify-between
                         rounded-r-lg
@@ -202,19 +198,15 @@ const WhyChooseUs = () => {
                     absolute inset-0
                     h-full w-full object-cover
                     transition-opacity duration-700
-                    ${
-                      activeImage === index
-                        ? "opacity-100"
-                        : "opacity-0"
-                    }
+                    ${activeImage === index ? "opacity-100" : "opacity-0"}
                   `}
                 />
               ))}
 
               {/* Trusted Badge */}
-              <div className="absolute right-5 top-5 w-[105px] rounded-xl  p-3  sm:right-6 sm:top-6 sm:w-[125px]">
+              <div className="absolute right-5 top-5 w-[135px] rounded-xl p-3 sm:right-6 sm:top-6 sm:w-[160px]">
                 <img
-                  src="https://natureharvest.co.in/about-us/trusted.png"
+                  src="/trusted.png"
                   alt="Trusted quality"
                   className="w-full object-contain"
                 />

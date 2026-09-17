@@ -14,7 +14,7 @@ const blogPosts = [
     date: "03 February, 2025",
     month: "February",
     image:
-      "https://images.unsplash.com/photo-1595856453919-b6b6ecaf3888?auto=format&fit=crop&q=80",
+      "/blog-sustainable.png",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const blogPosts = [
     date: "23 January, 2025",
     month: "January",
     image:
-      "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80",
+      "/blog-rice.png",
   },
   {
     id: 3,
@@ -33,8 +33,8 @@ const blogPosts = [
     date: "23 January, 2025",
     month: "January",
     image:
-      "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80",
-  },
+      "/blog-millets.png"
+  }
 ];
 
 const filterMonths = [

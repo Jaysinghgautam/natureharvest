@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
@@ -6,20 +7,21 @@ const aboutLinks = [
   { name: "Our Story", path: "/about/our-story" },
   { name: "Certificates", path: "/about/certificates" },
   { name: "BI", path: "/about/bi" },
-  { name: "Download Brochures", path: "/about/brochures" },
+  { name: "Download Brochures", path: "/pdfs/Nature Harvest -Catalogue.pdf" },
 ];
 
 const brochureLinks = [
-  { name: "Catalogue", path: "/about/brochures/catalogue" },
-  { name: "B2B Catalogue", path: "/about/brochures/b2b" },
-  { name: "Power Brand Catalogue", path: "/about/brochures/power-brand" },
+  { name: "Catalogue", path: "/pdfs/Nature Harvest -Catalogue.pdf" },
+  { name: "B2B Catalogue", path: "/pdfs/N.H - B2B Catalogue 2no.pdf" },
+  { name: "Power Brand Catalogue", path: "/pdfs/N.H - Power Brand  Catalogue 3no.pdf" },
   {
     name: "Corporate Presentation",
-    path: "/about/brochures/corporate",
+    path: "/pdfs/N.H - Corporate Presentation 4no.pdf",
   },
-  { name: "Rice Catalogue", path: "/about/brochures/rice" },
+  { name: "Rice Catalogue", path: "/pdfs/N.H - Rice Catalogue 5no.pdf" },
 ];
- 
+
+
 const navClass = ({ isActive }: { isActive: boolean }) =>
   `text-[17px] font-medium transition-colors duration-200 ${
     isActive ? "text-[#075657]" : "text-[#075657] hover:text-[#f2a619]"
@@ -105,13 +107,15 @@ function Navbar() {
                           {/* Brochure Submenu */}
                           <div className="invisible absolute left-full top-0 w-[325px] rounded-2xl bg-white py-2 opacity-0 shadow-[0_10px_35px_rgba(0,0,0,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
                             {brochureLinks.map((brochure) => (
-                              <Link
+                              <a
                                 key={brochure.path}
-                                to={brochure.path}
+                                href={brochure.path}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="block px-6 py-4 text-[17px] font-medium text-[#075657] transition-colors duration-200 hover:bg-[#f2a619] hover:text-white"
                               >
                                 {brochure.name}
-                              </Link>
+                              </a>
                             ))}
                           </div>
                         </div>
@@ -131,10 +135,10 @@ function Navbar() {
             </div>
 
             {/* Products */}
-
             <NavLink to="/products" className={navClass}>
               Products
             </NavLink>
+
             {/* Gallery */}
             <NavLink to="/gallery" className={navClass}>
               Gallery
@@ -245,14 +249,16 @@ function Navbar() {
 
                         <div className="ml-4 border-l border-[#f2a619] pl-4">
                           {brochureLinks.map((item) => (
-                            <Link
+                            <a
                               key={item.path}
-                              to={item.path}
+                              href={item.path}
+                              target="_blank"
+                              rel="noopener noreferrer"
                               onClick={closeMobile}
                               className="block py-2 text-sm text-[#52615e]"
                             >
                               {item.name}
-                            </Link>
+                            </a>
                           ))}
                         </div>
                       </motion.div>
@@ -261,7 +267,6 @@ function Navbar() {
                 </div>
 
                 {/* Mobile Products */}
-
                 <Link
                   to="/products"
                   onClick={closeMobile}
@@ -308,3 +313,4 @@ function Navbar() {
 }
 
 export default Navbar;
+
