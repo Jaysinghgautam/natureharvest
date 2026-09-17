@@ -71,7 +71,7 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
             className="relative"
           >
-       <div className="relative h-[380px] w-full overflow-hidden rounded-tr-[95px] rounded-bl-[95px] bg-black shadow-[0_25px_60px_rgba(0,70,70,0.15)] sm:h-[450px] lg:h-[500px] xl:h-[540px]">
+            <div className="relative h-[380px] w-full overflow-hidden rounded-tr-[95px] rounded-bl-[95px] bg-black shadow-[0_25px_60px_rgba(0,70,70,0.15)] sm:h-[450px] lg:h-[500px] xl:h-[540px]">
               <video
                 autoPlay
                 muted
@@ -95,7 +95,7 @@ const Hero = () => {
           </motion.div>
 
           {/* Content */}
-           <motion.div
+          <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -157,12 +157,12 @@ const Hero = () => {
                 </div>
               ))}
             </div>
-          </motion.div> 
+          </motion.div>
         </div>
       </div>
 
       {/* Social Media */}
-      <div className="fixed right-0 top-1/2 z-[80] flex -translate-y-1/2 flex-col overflow-hidden rounded-l-md shadow-lg sm:top-[100px] sm:translate-y-0">
+      <div className="fixed right-0 top-1/2 z-[80] flex -translate-y-1/2 flex-col overflow-hidden rounded-l-md shadow-lg">
         {socials.map((social) => (
           <a
             key={social.name}
@@ -170,7 +170,7 @@ const Hero = () => {
             target={social.href.startsWith("http") ? "_blank" : undefined}
             rel="noreferrer"
             aria-label={social.name}
-            className="flex h-10 w-10 items-center justify-center text-white transition-all hover:w-12 sm:h-12 sm:w-12"
+            className="flex h-8 w-8 items-center justify-center text-white transition-all hover:w-12 sm:h-12 sm:w-12"
             style={{ backgroundColor: social.bg }}
           >
             <span className="text-xs font-bold sm:text-base">
@@ -197,9 +197,9 @@ const Hero = () => {
               rel={contact.external ? "noreferrer" : undefined}
               className="group flex items-center gap-3 transition duration-300 hover:-translate-x-1"
             >
-              <span className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#00595d] shadow-lg">
+              {/* <span className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-[#00595d] shadow-lg">
                 {contact.name}
-              </span>
+              </span> */}
 
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#f6a51b] text-xl text-white shadow-lg transition group-hover:scale-110 sm:h-14 sm:w-14">
                 {contact.icon}
@@ -212,9 +212,10 @@ const Hero = () => {
           type="button"
           onClick={() => setConnectOpen((open) => !open)}
           aria-expanded={connectOpen}
-          className="flex h-14 min-w-[175px] items-center justify-center gap-3 rounded-[14px] bg-[#f6a51b] px-6 text-base font-semibold text-white shadow-lg transition hover:-translate-y-1 hover:bg-[#ee9f0d] active:scale-95 sm:h-[58px] sm:min-w-[205px] sm:text-lg"
+          className="flex h-12 min-w-[140px] items-center justify-center gap-2 rounded-lg bg-[#f6a51b] px-4 text-sm font-semibold text-white shadow-md transition hover:-translate-y-0.5 hover:bg-[#ee9f0d] active:scale-95 sm:h-13 sm:min-w-[170px] sm:px-5 sm:text-base"
         >
-          <span className="text-xl">{connectOpen ? "×" : "☎"}</span>
+          <span className="text-lg">{connectOpen ? "×" : ""}</span>
+
           {connectOpen ? "Close" : "Connect Now"}
         </button>
       </div>
