@@ -1,16 +1,6 @@
 import { motion } from "framer-motion";
 import Button from "../Button";
 
-const wheatLeaves = [
-  [18, 72, -35],
-  [5, 52, -45],
-  [20, 32, -35],
-  [35, 15, -20],
-  [55, 62, 35],
-  [50, 42, 35],
-  [55, 22, 25],
-];
-
 const Commitment = () => {
   return (
     <section className="overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
@@ -83,25 +73,6 @@ const Commitment = () => {
               </Button>
             </div>
           </div>
-
-          {/* Wheat Decoration */}
-          {/* <div className="absolute bottom-[-10px] left-6 z-10 sm:left-10">
-            <div className="relative h-36 w-28 rotate-[-25deg]">
-              <span className="absolute bottom-0 left-1/2 h-32 w-[3px] -translate-x-1/2 rotate-[-15deg] rounded-full bg-[#f2a318]" />
-
-              {wheatLeaves.map(([left, top, rotate], index) => (
-                <span
-                  key={index}
-                  className="absolute h-7 w-3 rounded-full bg-[#f2a318]"
-                  style={{
-                    left: `${left}px`,
-                    top: `${top}px`,
-                    transform: `rotate(${rotate}deg)`,
-                  }}
-                />
-              ))}
-            </div>
-          </div> */}
         </motion.div>
 
         {/* RIGHT — Green Screen Image */}
