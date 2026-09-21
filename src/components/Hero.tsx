@@ -17,16 +17,16 @@ type Contact = {
 };
 
 const socials: Social[] = [
-  { name: "Facebook", href: "#", bg: "#1877F2", icon: "f" },
-  { name: "Twitter", href: "#", bg: "#111", icon: "𝕏" },
+  { name: "Facebook", href: "https://www.facebook.com/people/Nature-Harvest/61572611409322/", bg: "#1877F2", icon: "f" },
+  { name: "Twitter", href: "https://x.com/NatureHarvestIn", bg: "#111", icon: "𝕏" },
   {
     name: "Instagram",
     href: "https://www.instagram.com/natureharvest.in/",
     bg: "#E1306C",
     icon: "◎",
   },
-  { name: "LinkedIn", href: "#", bg: "#0077B5", icon: "in" },
-  { name: "YouTube", href: "#", bg: "#FF0000", icon: "▶" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/achinta-banerjie-83a158a/", bg: "#0077B5", icon: "in" },
+  { name: "YouTube", href: "https://www.youtube.com/@NatureHarvestIndia", bg: "#FF0000", icon: "▶" },
 ];
 
 const contacts: Contact[] = [
@@ -42,7 +42,7 @@ const contacts: Contact[] = [
     href: "mailto:info@natureharvest.co.in",
     icon: "✉",
   },
-  { name: "Send Enquiry", href: "#contact", icon: "▤" },
+  { name: "Send Enquiry", href: "/contact", icon: "▤" },
 ];
 
 const stats = [

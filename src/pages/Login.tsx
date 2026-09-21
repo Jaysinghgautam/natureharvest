@@ -8,8 +8,8 @@ const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = () => {
+    // e.preventDefault();
 
     // Demo credentials
     const adminEmail = "admin@gmail.com";

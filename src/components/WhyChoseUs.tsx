@@ -181,9 +181,9 @@ const WhyChooseUs = () => {
               className="
                 relative h-[450px]
                 w-full overflow-hidden
-                rounded-tr-[60px]
+                rounded-tr-[100px]
                 rounded-tl-none
-                rounded-bl-[60px]
+                rounded-bl-[100px]
                 shadow-xl
                 sm:h-[550px]
                 lg:h-[680px]
@@ -204,7 +204,7 @@ const WhyChooseUs = () => {
               ))}
 
               {/* Trusted Badge */}
-              <div className="absolute right-5 top-5 w-[135px] rounded-xl p-3 sm:right-6 sm:top-6 sm:w-[160px]">
+          <div className="absolute right-2 top-2 w-[200px] rounded-xl p-3 sm:right-6 sm:top-6 sm:w-[160px]">
                 <img
                   src="/trusted.png"
                   alt="Trusted quality"
