@@ -87,10 +87,7 @@ const Hero = () => {
               </video>
 
               <div className="absolute inset-0 bg-gradient-to-tr from-[#003f42]/20 via-transparent to-white/10" />
-
-              <span className="absolute bottom-5 left-5 rounded-full border border-white/30 bg-white/15 px-4 py-2 text-xs font-medium text-white backdrop-blur-md sm:text-sm">
-                🌱 Naturally Sourced
-              </span>
+ 
             </div>
           </motion.div>
 

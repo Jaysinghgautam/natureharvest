@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
@@ -13,14 +12,16 @@ const aboutLinks = [
 const brochureLinks = [
   { name: "Catalogue", path: "/pdfs/Nature Harvest -Catalogue.pdf" },
   { name: "B2B Catalogue", path: "/pdfs/N.H - B2B Catalogue 2no.pdf" },
-  { name: "Power Brand Catalogue", path: "/pdfs/N.H - Power Brand  Catalogue 3no.pdf" },
+  {
+    name: "Power Brand Catalogue",
+    path: "/pdfs/N.H - Power Brand  Catalogue 3no.pdf",
+  },
   {
     name: "Corporate Presentation",
     path: "/pdfs/N.H - Corporate Presentation 4no.pdf",
   },
   { name: "Rice Catalogue", path: "/pdfs/N.H - Rice Catalogue 5no.pdf" },
 ];
-
 
 const navClass = ({ isActive }: { isActive: boolean }) =>
   `text-[17px] font-medium transition-colors duration-200 ${
@@ -155,6 +156,9 @@ function Navbar() {
             <button className="text-[17px] font-medium text-[#075657] transition hover:text-[#f2a619]">
               Language
             </button>
+            <NavLink to="/login" className={navClass}>
+              Admin
+            </NavLink>
           </nav>
 
           {/* Mobile Button */}
@@ -313,4 +317,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

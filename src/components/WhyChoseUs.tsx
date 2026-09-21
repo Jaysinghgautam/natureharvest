@@ -12,22 +12,22 @@ const trustItems = [
   {
     title: "We Value Transparency and Fairness:",
     description:
-      "We believe in transparent communication, fair business practices, and building long-term relationships with our customers.",
+      "Open communication is the cornerstone of our business. We offer competitive and fair pricing to build trust and cultivate long-term partnerships.",
   },
   {
     title: "We Guarantee Global Quality and Compliance:",
     description:
-      "Our products follow rigorous quality standards and international compliance requirements to ensure reliable global delivery.",
+      "Every product we deliver meets the highest international standards. You can trust us to provide premium quality that adheres to global regulations.",
   },
   {
     title: "We Make Business Easy:",
     description:
-      "From sourcing to documentation and delivery, we simplify the process and provide flexible solutions according to your requirements.",
+      "From efficient documentation to seamless coordination, we simplify the complexities of trade to ensure your experience with us is hassle-free.",
   },
   {
     title: "We Deliver Consistency and Reliability:",
     description:
-      "We maintain consistent quality and dependable supply so that every shipment meets your expectations.",
+      "You can count on us for consistent product quality and on-time deliveries, every single time.",
   },
 ];
 
