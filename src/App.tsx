@@ -26,6 +26,7 @@ import Privacy from "./pages/Privacy";
 import TermAndCondition from "./pages/TermAndCondition";
 import Login from "./pages/Login";
 import DashBord from "./pages/DashBord";
+import ProtectedRoute from "./pages/ProtecteRoute";
 
 function App() {
   return (
@@ -67,11 +68,12 @@ function App() {
               <Route path="/faq" element={<FAQ />} />
               Term and Conditions
               <Route path="/terms" element={<TermAndCondition />} />
-
               {/* Admin login */}
-               <Route path="/login" element={<Login />} />
-               {/* admin DashBoard  */}
-               <Route path="/admin/dashboard" element={<DashBord/>} />
+              <Route path="/login" element={<Login />} />
+              {/* admin DashBoard  */}
+              <Route element={<ProtectedRoute />}>
+                <Route path="/admin/dashboard" element={<DashBord />} />
+              </Route>
             </Routes>
           </main>
 

@@ -125,18 +125,21 @@ const Hero = () => {
             </div>
 
             {/* Buttons */}
-            <div className="mt-8  ml-8 flex flex-wrap gap-4">
-              <Button to="/products" className=" hover:!text-[#ffffff]">
-                Our Products
-              </Button>
+<div className="mt-8 flex w-full flex-nowrap items-center justify-center gap-2 px-3 sm:ml-8 sm:w-auto sm:justify-start sm:gap-4 sm:px-0">
+  <Button
+    to="/products"
+    className="flex-1 justify-center whitespace-nowrap !px-3 !py-2 text-center !text-xs hover:!text-[#ffffff] sm:flex-none sm:!px-8 sm:!py-3 sm:!text-base"
+  >
+    Our Products
+  </Button>
 
-              <Button
-                to="/about/our-story"
-                className="border-2 border-[#f2a318] bg-white/30 !text-[#00595d] hover:!bg-[#f2a318] hover:!text-black"
-              >
-                Our Story
-              </Button>
-            </div>
+  <Button
+    to="/about/our-story"
+    className="flex-1 justify-center whitespace-nowrap border-2 border-[#f2a318] bg-white/30 !px-3 !py-2 text-center !text-xs !text-[#00595d] hover:!bg-[#f2a318] hover:!text-black sm:flex-none sm:!px-8 sm:!py-3 sm:!text-base"
+  >
+    Our Story
+  </Button>
+</div>
 
             {/* Stats */}
             <div className="mt-8 ml-8 items-center flex flex-wrap gap-6 border-t border-[#00595d]/10 pt-6">

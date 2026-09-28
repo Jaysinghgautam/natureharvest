@@ -150,8 +150,9 @@ const OurStory = () => {
       <section className="overflow-hidden bg-white px-5 py-16 sm:px-8 lg:px-10 lg:py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Images */}
+          {/* Images */}
           <motion.div {...slideLeft} className="flex flex-col gap-5 sm:gap-6">
-            <div className="group h-[330px] flex w-[550px] overflow-hidden rounded-tr-[60px] rounded-bl-[60px] shadow-md sm:h-[280px]">
+            <div className="group mx-auto h-[220px] w-full max-w-[480px] overflow-hidden rounded-tr-[45px] rounded-bl-[45px] shadow-md sm:h-[260px] sm:rounded-tr-[60px] sm:rounded-bl-[60px] lg:mx-0 lg:h-[280px]">
               <img
                 src="/1.jpg"
                 alt="Hands holding soil"
@@ -159,7 +160,7 @@ const OurStory = () => {
               />
             </div>
 
-            <div className="group h-[330px] w-[550px] flex justify-center overflow-hidden rounded-tl-[80px] rounded-tr-none rounded-bl-none rounded-br-[80px] shadow-md sm:h-[280px]">
+            <div className="group mx-auto h-[220px] w-full max-w-[480px] overflow-hidden rounded-tl-[60px] rounded-br-[60px] shadow-md sm:h-[260px] sm:rounded-tl-[80px] sm:rounded-br-[80px] lg:mx-0 lg:h-[280px]">
               <img
                 src="/2.jpg"
                 alt="Solar panels in a field"
@@ -287,15 +288,16 @@ const OurStory = () => {
             </div>
 
             {/* Identity Image */}
-            <div className="group relative h-full w-full">
-              <div className="absolute inset-0 overflow-hidden rounded-tl-none rounded-tr-[80px] rounded-bl-[80px] rounded-br-none shadow-xl">
+            <div className="group relative h-[320px] w-full sm:h-[420px] lg:h-full lg:min-h-[480px]">
+              <div className="absolute inset-0 overflow-hidden rounded-tr-[50px] rounded-bl-[50px] shadow-xl sm:rounded-tr-[80px] sm:rounded-bl-[80px]">
                 <img
                   src="/our-identity.jpg"
                   alt="Hands holding fresh harvest"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
-              <div className="absolute right-5 top-5 w-[135px] rounded-xl p-3 sm:right-6 sm:top-6 sm:w-[160px">
+
+              <div className="absolute right-4 top-4 w-[110px] rounded-xl p-2 sm:right-6 sm:top-6 sm:w-[160px] sm:p-3">
                 <img
                   src="/trusted.png"
                   alt="Trusted quality"

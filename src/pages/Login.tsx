@@ -1,32 +1,64 @@
  import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
-    // e.preventDefault();
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
-    // Demo credentials
-    const adminEmail = "admin@gmail.com";
-    const adminPassword = "admin123";
+// Login page
 
-    if (email === adminEmail && password === adminPassword) {
-      localStorage.setItem("adminLoggedIn", "true");
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
 
-      navigate("/admin/dashboard");
-    } else {
-      setError("Invalid email or password");
+    setErrorMessage("");
+    setLoading(true);
+
+    try {
+      const response = await axios.post(
+        `${BACKEND_URL}/api/admin/login`,
+        {
+          email,
+          password,
+        }
+      );
+
+      const data = response.data;
+
+      if (data.success) {
+        // Backend se token key match karein (token ya accessToken)
+        const token = data.token || data.accessToken;
+
+        if (token) {
+          localStorage.setItem("adminToken", token);
+          navigate("/admin/dashboard");
+        } else {
+          setErrorMessage("Token not received from server");
+        }
+      } else {
+        setErrorMessage(data.message || "Invalid email or password");
+      }
+    } catch (err: any) {
+      console.error(err);
+      setErrorMessage(
+        err.response?.data?.message ||
+          "Something went wrong. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
       <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+
         <h1 className="text-3xl font-bold text-center mb-2">
           Admin Login
         </h1>
@@ -36,6 +68,7 @@ const AdminLogin = () => {
         </p>
 
         <form onSubmit={handleLogin} className="space-y-5">
+
           <div>
             <label className="block mb-2 font-medium">
               Email
@@ -66,18 +99,20 @@ const AdminLogin = () => {
             />
           </div>
 
-          {error && (
+          {errorMessage && (
             <p className="text-red-500 text-sm">
-              {error}
+              {errorMessage}
             </p>
           )}
 
           <button
             type="submit"
+            disabled={loading}
             className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition"
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
+
         </form>
       </div>
     </div>
