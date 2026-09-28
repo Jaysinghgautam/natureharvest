@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
-
+import LanguageSwitcher from "./LanguageSwitcher";
 const aboutLinks = [
   { name: "Our Story", path: "/about/our-story" },
   { name: "Certificates", path: "/about/certificates" },
@@ -152,13 +152,12 @@ function Navbar() {
             <NavLink to="/contact" className={navClass}>
               Contact Us
             </NavLink>
-
-            <button className="text-[17px] font-medium text-[#075657] transition hover:text-[#f2a619]">
-              Language
-            </button>
             <NavLink to="/login" className={navClass}>
               Admin
             </NavLink>
+            <div className="text-[17px] font-medium text-[#075657] transition hover:text-[#f2a619]">
+              <LanguageSwitcher />
+            </div>
           </nav>
 
           {/* Mobile Button */}
@@ -304,9 +303,9 @@ function Navbar() {
                   Contact Us
                 </Link>
 
-                <button className="py-4 text-left font-bold text-[#075657]">
-                  Language
-                </button>
+                <div className="py-4 text-left font-bold text-[#075657]">
+                  <LanguageSwitcher />
+                </div>
               </nav>
             </motion.div>
           </>
