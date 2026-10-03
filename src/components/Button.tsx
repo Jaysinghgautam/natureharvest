@@ -7,6 +7,7 @@ type ButtonProps = {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   className?: string;
+  disabled?: boolean;
 };
 
 const Button = ({
@@ -16,6 +17,7 @@ const Button = ({
   onClick,
   type = "button",
   className = "",
+  disabled = false,
 }: ButtonProps) => {
   const styles = `
     group
@@ -83,7 +85,8 @@ const Button = ({
     <button
       type={type}
       onClick={onClick}
-      className={styles}
+      disabled={disabled}
+      className={`${styles} ${disabled ? "opacity-60 cursor-not-allowed pointer-events-none" : ""}`}
     >
       <span className="relative z-10 !text-black">{children}</span>
     </button>

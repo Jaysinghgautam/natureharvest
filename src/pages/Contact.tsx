@@ -1,8 +1,21 @@
+import React, { useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Button from "../components/Button";
 import SectionTitle from "../components/SectionTitle";
+
+// ─── Backend URL ─────────────────────────────────────────────────────────────
+const BACKEND_URL = (
+  (import.meta as unknown as { env?: Record<string, string> }).env
+    ?.VITE_BACKEND_URL ||
+  (import.meta as unknown as { env?: Record<string, string> }).env
+    ?.VITE_API_URL ||
+  "http://localhost:3000"
+).replace(/\/+$/, "");
 
 const slideRight: Variants = {
   hidden: { opacity: 0, x: -40 },
@@ -66,8 +79,77 @@ const contactDetails = [
 ];
 
 const Contacts = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus(null);
+    setLoading(true);
+
+    try {
+      const { data } = await axios.post(
+        `${BACKEND_URL}/api/email/sendMail`,
+        formData
+      );
+
+      if (data.success) {
+        setStatus({
+          type: "success",
+          message:
+            data.message ||
+            "Thank you! Your message has been sent successfully. We will get back to you soon.",
+        });
+        toast.success("Message sent successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        setStatus({
+          type: "error",
+          message: data.message || "Failed to send message.",
+        });
+        toast.error(data.message || "Failed to send message");
+      }
+    } catch (err: unknown) {
+      const errorMsg =
+        (err as { response?: { data?: { message?: string } } })?.response?.data
+          ?.message || "Failed to send message. Please try again later.";
+      setStatus({
+        type: "error",
+        message: errorMsg,
+      });
+      toast.error(errorMsg);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#f8f9fa]">
+      <ToastContainer position="top-right" autoClose={4000} />
+
       {/* LOCATION MAP */}
       <section className="px-5 pb-4 pt-10 sm:px-8 lg:px-10 lg:pt-14">
         <div className="mx-auto max-w-7xl">
@@ -172,13 +254,31 @@ const Contacts = () => {
                 </h2>
               </div>
 
-              <form
-                className="flex flex-col gap-6"
-                onSubmit={(event) => event.preventDefault()}
-              >
+              {/* Status Message Banner */}
+              {status && (
+                <div
+                  className={`mb-6 flex items-start gap-3 rounded-lg p-4 text-sm leading-relaxed ${
+                    status.type === "success"
+                      ? "border border-green-400/40 bg-green-500/20 text-green-100"
+                      : "border border-red-400/40 bg-red-500/20 text-red-100"
+                  }`}
+                >
+                  {status.type === "success" ? (
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green-400" />
+                  ) : (
+                    <AlertCircle className="mt-0.5 h-5 w-5 shrink-0 text-red-400" />
+                  )}
+                  <span>{status.message}</span>
+                </div>
+              )}
+
+              <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                   <input
                     type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                     placeholder="Your Name *"
                     required
                     className="
@@ -190,6 +290,9 @@ const Contacts = () => {
 
                   <input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="Email Address *"
                     required
                     className="
@@ -201,8 +304,10 @@ const Contacts = () => {
 
                   <input
                     type="tel"
-                    placeholder="Phone Number *"
-                    required
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Phone Number"
                     className="
                       w-full rounded-md bg-white px-4 py-3.5 text-sm text-gray-800
                       outline-none placeholder:text-gray-500
@@ -212,6 +317,9 @@ const Contacts = () => {
 
                   <input
                     type="text"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     placeholder="Subject *"
                     required
                     className="
@@ -224,6 +332,9 @@ const Contacts = () => {
 
                 <textarea
                   rows={6}
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   placeholder="Write your message *"
                   required
                   className="
@@ -234,7 +345,16 @@ const Contacts = () => {
                 />
 
                 <div className="mt-2">
-                  <Button type="submit">Send Message</Button>
+                  <Button type="submit" disabled={loading}>
+                    {loading ? (
+                      <span className="flex items-center gap-2">
+                        <Loader2 className="h-4 w-4 animate-spin text-black" />
+                        Sending...
+                      </span>
+                    ) : (
+                      "Send Message"
+                    )}
+                  </Button>
                 </div>
               </form>
             </div>
