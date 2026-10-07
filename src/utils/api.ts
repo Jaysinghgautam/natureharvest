@@ -28,8 +28,11 @@
 // }
 
 
-export const BACKEND_URL =
-  import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+export const BACKEND_URL = (
+  import.meta.env.VITE_BACKEND_URL ||
+  import.meta.env.VITE_API_URL ||
+  "http://localhost:3000"
+).replace(/\/+$/, "");
 
 export const FALLBACK_IMG = "/no-image.png";
 
