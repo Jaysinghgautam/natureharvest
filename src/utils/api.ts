@@ -33,7 +33,7 @@ export const BACKEND_URL =
 
 export const FALLBACK_IMG = "/no-image.png";
 
-export function getImageSrc(image) {
+export function getImageSrc(image?: string | null): string {
   if (!image) return FALLBACK_IMG;
 
   if (
