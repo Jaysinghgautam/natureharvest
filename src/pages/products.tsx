@@ -1,13 +1,15 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import Breadcrumb from "../components/Breadcrub";
 import Button from "../components/Button";
 import SectionTitle from "../components/SectionTitle";
+import { BACKEND_URL, FALLBACK_IMG, getImageSrc } from "../utils/api";
 
 const productCategories = [
   {
-    id: 1,
+    id: "1",
     title: "Basmati Rice",
     description:
       "Premium Basmati Rice With Long Grains, Rich Aroma, And Fluffy Texture, Ideal For Luxurious Dishes Like Biryani And Pilaf.",
@@ -15,7 +17,7 @@ const productCategories = [
       "/images/basmati-rice.png",
   },
   {
-    id: 2,
+    id: "2",
     title: "Non-Basmati Rice",
     description:
       "A Variety Of Non-Basmati Rice With Great Texture, Ideal For Everyday Meals And Versatile Cooking Needs.",
@@ -23,7 +25,7 @@ const productCategories = [
       "/images/non-basmati-rice.png",
   },
   {
-    id: 3,
+    id: "3",
     title: "Spices",
     description:
       "A Wide Range Of Aromatic Spices, Including Cumin, Turmeric, And Cardamom, Providing Authentic Flavor To Your Dishes.",
@@ -31,7 +33,7 @@ const productCategories = [
       "/images/spices.png",
   },
   {
-    id: 4,
+    id: "4",
     title: "Pulses and Lentils",
     description:
       "High-Quality Pulses And Lentils, Including Lentils, Chickpeas, And Beans, Perfect For Nutritious And Hearty Meals.",
@@ -39,7 +41,7 @@ const productCategories = [
       "/images/pulsess-and-lentils.png",
   },
   {
-    id: 5,
+    id: "5",
     title: "Millets & Coarse Grains",
     description:
       "Healthy And Nutritious Millets And Coarse Grains, Perfect For Weight Management And Wholesome Meals.",
@@ -47,7 +49,7 @@ const productCategories = [
       "/images/millets&Coarse-grains.png",
   },
   {
-    id: 6,
+    id: "6",
     title: "Dehydrated & Processed Items",
     description:
       "Convenient Dehydrated And Processed Foods Like Dried Fruits And Vegetables, Ideal For Snacks And Garnishes.",
@@ -55,7 +57,7 @@ const productCategories = [
       "/images/dehydrated1.png",
   },
   {
-    id: 7,
+    id: "7",
     title: "Oil Seeds",
     description:
       "Premium Oil Seeds, Including Sunflower, Mustard, And Sesame, Perfect For Extracting Pure, Natural Oils.",
@@ -142,8 +144,58 @@ const staggerContainer = {
   },
 };
 
+interface ProductItem {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+}
+
 const Products = () => {
   const [openAccordionId, setOpenAccordionId] = useState<number | null>(null);
+  const [productList, setProductList] = useState<ProductItem[]>(productCategories);
+
+  useEffect(() => {
+    let isMounted = true;
+    axios
+      .get(`${BACKEND_URL}/api/products/list`)
+      .then(({ data }) => {
+        if (!isMounted) return;
+        if (data.success && Array.isArray(data.products) && data.products.length > 0) {
+          const mapped: ProductItem[] = data.products.map(
+            (product: {
+              _id?: string;
+              id?: string;
+              number?: string;
+              name?: string;
+              category?: string;
+              description?: string;
+              image?: string;
+              images?: string[];
+            }, index: number) => {
+              const rawImg =
+                product.image ||
+                (Array.isArray(product.images) && product.images[0]) ||
+                "";
+              return {
+                id: product._id || product.id || String(product.number || index + 1),
+                title: product.name || product.category || "Product",
+                description: product.description || "",
+                image: getImageSrc(rawImg),
+              };
+            }
+          );
+          setProductList(mapped);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to load products from backend:", err);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const toggleAccordion = (id: number) => {
     setOpenAccordionId((prev) => (prev === id ? null : id));
@@ -202,7 +254,7 @@ const Products = () => {
           viewport={{ once: true, margin: "-50px" }}
           className="mt-16 grid gap-8 md:grid-cols-3"
         >
-          {productCategories.map((product) => (
+          {productList.map((product) => (
             <motion.div
               key={product.id}
               variants={fadeUp}
@@ -213,6 +265,10 @@ const Products = () => {
                 <img
                   src={product.image}
                   alt={product.title}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = FALLBACK_IMG;
+                  }}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
 

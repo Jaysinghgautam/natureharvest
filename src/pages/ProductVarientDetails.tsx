@@ -1,14 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Star } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 
 import Breadcrumb from "../components/Breadcrub";
 import Button from "../components/Button";
 import ProductCard from "../components/ProductCard";
 
 import { products, productVariants } from "../data/products";
+import { BACKEND_URL, getImageSrc } from "../utils/api";
 
 type TabType = "description" | "features" | "quality";
+
+interface ProductItem {
+  id: string;
+  _id?: string;
+  name: string;
+  category?: string;
+  description: string;
+  image?: string;
+}
+
+interface VariantItem {
+  id: string;
+  _id?: string;
+  categoryId: string;
+  name: string;
+  description: string;
+  image: string;
+  keyFeatures?: string[];
+  globalQualityStandards?: string[];
+  qualityStandards?: string[] | string;
+  rating?: number;
+  reviews?: number;
+}
 
 const ProductVariantDetails = () => {
   const { id, variantId } = useParams<{
@@ -18,18 +43,192 @@ const ProductVariantDetails = () => {
 
   const [activeTab, setActiveTab] = useState<TabType>("description");
 
-  /* ================= FIND CATEGORY ================= */
-  const product = products.find((item) => String(item.id) === String(id));
+  const [product, setProduct] = useState<ProductItem | null>(() => {
+    const found = products.find((item) => String(item.id) === String(id));
+    return found ? { ...found } : null;
+  });
 
-  /* ================= FIND VARIANT ================= */
-  const variant = productVariants.find(
-    (item) =>
-      String(item.id) === String(variantId) &&
-      String(item.categoryId) === String(id),
-  );
+  const [variant, setVariant] = useState<VariantItem | null>(() => {
+    const found = productVariants.find(
+      (item) =>
+        String(item.id) === String(variantId) &&
+        String(item.categoryId) === String(id)
+    );
+    return found ? { ...found } : null;
+  });
+
+  const [similarProducts, setSimilarProducts] = useState<VariantItem[]>(() => {
+    return productVariants
+      .filter(
+        (item) =>
+          String(item.categoryId) === String(id) &&
+          String(item.id) !== String(variantId)
+      )
+      .map((item) => ({ ...item }));
+  });
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+    setLoading(true);
+
+    Promise.allSettled([
+      axios.get(`${BACKEND_URL}/api/products/list`),
+      axios.get(`${BACKEND_URL}/api/products/variant/list`),
+    ]).then(([prodRes, varRes]) => {
+      if (!isMounted) return;
+
+      const backendProducts: any[] =
+        prodRes.status === "fulfilled" &&
+          prodRes.value.data?.success &&
+          Array.isArray(prodRes.value.data?.products)
+          ? prodRes.value.data.products
+          : [];
+
+      const backendVariants: any[] =
+        varRes.status === "fulfilled" &&
+          varRes.value.data?.success &&
+          Array.isArray(varRes.value.data?.variants)
+          ? varRes.value.data.variants
+          : [];
+
+      // 1. Find Product
+      let currentProd: ProductItem | null = null;
+      const matchedBackendProd = backendProducts.find((p: any) => {
+        const pMongoId = String(p._id || "").toLowerCase();
+        const pId = String(p.id || "").toLowerCase();
+        const pNum = String(p.number || "").toLowerCase();
+        const pName = String(p.name || "").toLowerCase();
+        const searchId = String(id || "").toLowerCase();
+        return (
+          pMongoId === searchId ||
+          pId === searchId ||
+          pNum === searchId ||
+          pName === searchId
+        );
+      });
+
+      if (matchedBackendProd) {
+        currentProd = {
+          id: matchedBackendProd._id || matchedBackendProd.id,
+          _id: matchedBackendProd._id,
+          name: matchedBackendProd.name,
+          category: matchedBackendProd.category,
+          description: matchedBackendProd.description,
+          image: getImageSrc(matchedBackendProd.image),
+        };
+      } else {
+        const staticP = products.find((item) => String(item.id) === String(id));
+        if (staticP) {
+          currentProd = { ...staticP };
+        }
+      }
+
+      setProduct(currentProd);
+
+      // 2. Find Variant
+      let currentVar: VariantItem | null = null;
+      const matchedBackendVar = backendVariants.find((v: any) => {
+        const vMongoId = String(v._id || "").toLowerCase();
+        const vId = String(v.id || "").toLowerCase();
+        const searchVarId = String(variantId || "").toLowerCase();
+        return vMongoId === searchVarId || vId === searchVarId;
+      });
+
+      if (matchedBackendVar) {
+        currentVar = {
+          id: matchedBackendVar._id || matchedBackendVar.id,
+          _id: matchedBackendVar._id,
+          categoryId: matchedBackendVar.categoryId,
+          name: matchedBackendVar.name,
+          description: matchedBackendVar.description,
+          image: getImageSrc(matchedBackendVar.image),
+          keyFeatures: Array.isArray(matchedBackendVar.keyFeatures)
+            ? matchedBackendVar.keyFeatures
+            : [],
+          globalQualityStandards: Array.isArray(
+            matchedBackendVar.globalQualityStandards
+          )
+            ? matchedBackendVar.globalQualityStandards
+            : [],
+          qualityStandards: Array.isArray(matchedBackendVar.qualityStandards)
+            ? matchedBackendVar.qualityStandards
+            : matchedBackendVar.qualityStandards
+              ? [matchedBackendVar.qualityStandards]
+              : [],
+          rating: Number(matchedBackendVar.rating) || 0,
+          reviews: Number(matchedBackendVar.reviews) || 0,
+        };
+      } else {
+        const staticV = productVariants.find(
+          (item) => String(item.id) === String(variantId)
+        );
+        if (staticV) {
+          currentVar = {
+            ...staticV,
+            image: getImageSrc(staticV.image),
+          };
+        }
+      }
+
+      setVariant(currentVar);
+
+      // 3. Similar Products
+      if (currentProd) {
+        const matchingBackendSimilar = backendVariants
+          .filter((v: any) => {
+            const catId = String(v.categoryId || "").trim().toLowerCase();
+            const targetMongoId = String(currentProd?._id || "").trim().toLowerCase();
+            const targetId = String(currentProd?.id || "").trim().toLowerCase();
+            const targetNum = String(currentProd?.name || "").trim().toLowerCase();
+            const searchParam = String(id || "").trim().toLowerCase();
+            const isSameCat =
+              catId === targetMongoId ||
+              catId === targetId ||
+              catId === targetNum ||
+              catId === searchParam;
+            const isDiff =
+              String(v._id) !== String(currentVar?._id || currentVar?.id) &&
+              String(v.id) !== String(currentVar?._id || currentVar?.id);
+            return isSameCat && isDiff;
+          })
+          .map((item: any, idx: number) => ({
+            id: item._id || item.id || String(idx + 1),
+            _id: item._id,
+            categoryId: item.categoryId,
+            name: item.name,
+            description: item.description,
+            image: getImageSrc(item.image),
+          }));
+
+        if (matchingBackendSimilar.length > 0) {
+          setSimilarProducts(matchingBackendSimilar);
+        } else {
+          const staticSimilar = productVariants
+            .filter(
+              (item) =>
+                String(item.categoryId) === String(currentProd?.id || id) &&
+                String(item.id) !== String(currentVar?.id || variantId)
+            )
+            .map((item) => ({
+              ...item,
+              image: getImageSrc(item.image),
+            }));
+          setSimilarProducts(staticSimilar);
+        }
+      }
+
+      setLoading(false);
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [id, variantId]);
 
   /* ================= NOT FOUND ================= */
-  if (!product || !variant) {
+  if ((!product || !variant) && !loading) {
     return (
       <section className="flex min-h-[70vh] items-center justify-center px-5">
         <div className="text-center">
@@ -56,30 +255,28 @@ const ProductVariantDetails = () => {
     );
   }
 
-  /* ================= SIMILAR PRODUCTS ================= */
-  const similarProducts = productVariants.filter(
-    (item) =>
-      String(item.categoryId) === String(product.id) && item.id !== variant.id,
-  );
+  if (!product || !variant) {
+    return null;
+  }
 
   /* ================= TABS ================= */
   const tabs: {
     id: TabType;
     label: string;
   }[] = [
-    {
-      id: "description",
-      label: "Description",
-    },
-    {
-      id: "features",
-      label: "Key Features",
-    },
-    {
-      id: "quality",
-      label: "Global Quality Standards",
-    },
-  ];
+      {
+        id: "description",
+        label: "Description",
+      },
+      {
+        id: "features",
+        label: "Key Features",
+      },
+      {
+        id: "quality",
+        label: "Global Quality Standards",
+      },
+    ];
 
   return (
     <>
@@ -195,7 +392,9 @@ const ProductVariantDetails = () => {
               sm:text-lg
             "
                 >
-                  {variant.qualityStandards.join(" | ")}
+                  {Array.isArray(variant.qualityStandards)
+                    ? variant.qualityStandards.join(" | ")
+                    : variant.qualityStandards || ""}
                 </span>
               </div>
 
@@ -205,17 +404,16 @@ const ProductVariantDetails = () => {
                   {[1, 2, 3, 4, 5].map((star) => (
                     <Star
                       key={star}
-                      className={`h-5 w-5 ${
-                        star <= Math.round(variant.rating)
-                          ? "fill-[#f2a318] text-[#f2a318]"
-                          : "fill-gray-200 text-gray-200"
-                      }`}
+                      className={`h-5 w-5 ${star <= Math.round(Number(variant.rating) || 0)
+                        ? "fill-[#f2a318] text-[#f2a318]"
+                        : "fill-gray-200 text-gray-200"
+                        }`}
                     />
                   ))}
                 </div>
 
                 <span className="text-sm text-gray-500 sm:text-base">
-                  {variant.rating.toFixed(1)} from {variant.reviews} Reviews
+                  {(Number(variant.rating) || 0).toFixed(1)} from {variant.reviews || 0} Reviews
                 </span>
               </div>
 
@@ -275,10 +473,9 @@ const ProductVariantDetails = () => {
                       transition-all
                       duration-300
                       sm:px-6
-                      ${
-                        isActive
-                          ? "bg-[#075b5b] font-bold text-white"
-                          : "bg-white text-gray-600 hover:bg-[#fbe4b8] hover:text-[#075b5b]"
+                      ${isActive
+                        ? "bg-[#075b5b] font-bold text-white"
+                        : "bg-white text-gray-600 hover:bg-[#fbe4b8] hover:text-[#075b5b]"
                       }
                     `}
                   >
@@ -310,7 +507,7 @@ const ProductVariantDetails = () => {
                     Key Features
                   </h3>
 
-                  {variant.keyFeatures?.length > 0 ? (
+                  {variant.keyFeatures && variant.keyFeatures.length > 0 ? (
                     <div className="grid gap-3 sm:grid-cols-2">
                       {variant.keyFeatures.map((feature) => (
                         <div
@@ -364,7 +561,7 @@ const ProductVariantDetails = () => {
                     Global Quality Standards
                   </h3>
 
-                  {variant.globalQualityStandards?.length > 0 ? (
+                  {variant.globalQualityStandards && variant.globalQualityStandards.length > 0 ? (
                     <div className="grid gap-3 sm:grid-cols-2">
                       {variant.globalQualityStandards.map((standard) => (
                         <div

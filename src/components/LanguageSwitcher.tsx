@@ -4,10 +4,9 @@
 // code = Google Translate ka language code
 const LANGUAGES = [
   { code: "en", label: "English" },
-  { code: "hi", label: "हिन्दी" },
-  { code: "ar", label: "العربية" },
-  { code: "fr", label: "Français" },
-  { code: "es", label: "Español" },
+  { code: "ar", label: "Arabic" },
+  { code: "fr", label: "French" },
+  { code: "es", label: "Spanish" },
 ];
 
 const SCRIPT_ID = "google-translate-script";
@@ -39,7 +38,7 @@ let widgetReady = false;
 const initWidget = () => {
   if (widgetReady || !window.google?.translate?.TranslateElement) return;
   widgetReady = true;
-  console.log("[Lang] Google widget init ho raha hai");
+ 
 
   let host = document.getElementById(HOST_ID);
   if (!host) {
@@ -103,7 +102,6 @@ const LanguageSwitcher = ({ className = "" }: Props) => {
       script.src =
         "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
       script.async = true;
-      script.onload = () => console.log("[Lang] Google script load ho gayi");
       script.onerror = () =>
         console.error(
           "[Lang] Google script load NAHI hui (net / adblock / VPN block kar raha hai)"
